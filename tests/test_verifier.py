@@ -14,11 +14,12 @@ except ImportError:
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from src.data_loader import load_demo_incident, load_evaluation_cases
-from src.normalizer import normalize_incident_events
+from src.normalizer import normalize_incident_events, normalize_timestamp
 from src.evidence_retriever import retrieve_evidence_for_findings
 from src.verifier import verify_finding, verify_all_findings, evaluate_verification_accuracy
 from src.trust_score import calculate_overall_trust_score
 from src.graph import run_investigation_pipeline, build_sentinelx_graph
+from datetime import timezone
 
 def get_test_data():
     incident = load_demo_incident()
@@ -115,6 +116,82 @@ def test_7_complete_langgraph_execution():
     assert len(state["verification_results"]) == 6
     assert state["evaluation_summary"]["accuracy"] == 1.0, f"Verification accuracy should be 1.0 (100%), got {state['evaluation_summary']['accuracy']}"
 
+def test_8_timestamp_normalizer_naive_iso():
+    """Test naive ISO timestamp normalization to explicit UTC."""
+    naive_str = "2025-12-12T10:28:22.693190"
+    dt = normalize_timestamp(naive_str)
+    assert dt.tzinfo is not None, "Normalized timestamp must be timezone-aware"
+    assert dt.tzinfo == timezone.utc, "Normalized timestamp must have UTC tzinfo"
+    assert dt.year == 2025 and dt.month == 12 and dt.day == 12
+    assert dt.hour == 10 and dt.minute == 28 and dt.second == 22
+
+def test_9_timestamp_normalizer_utc_aware():
+    """Test UTC-aware timestamp with offset and Z suffix."""
+    utc_str_1 = "2025-12-12T10:28:23.483+00:00"
+    utc_str_2 = "2025-12-12T10:28:23.483Z"
+    dt1 = normalize_timestamp(utc_str_1)
+    dt2 = normalize_timestamp(utc_str_2)
+    assert dt1.tzinfo == timezone.utc
+    assert dt2.tzinfo == timezone.utc
+    assert dt1 == dt2, "ISO with +00:00 and with Z must produce identical UTC datetimes"
+
+def test_10_timestamp_normalizer_non_utc_offset():
+    """Test timestamp with non-UTC offset (e.g. +05:30) converted accurately to UTC."""
+    offset_str = "2025-12-12T15:58:22.000+05:30"
+    dt = normalize_timestamp(offset_str)
+    assert dt.tzinfo == timezone.utc
+    assert dt.hour == 10 and dt.minute == 28 and dt.second == 22, f"Expected 10:28:22 UTC, got {dt.hour}:{dt.minute}:{dt.second}"
+
+def test_11_mixed_naive_and_aware_event_set_verification():
+    """CRITICAL TEST: Verify a finding citing events with mixed naive and aware timestamps."""
+    mixed_events = [
+        {"event_id": "EVT-M1", "timestamp": "2025-12-12T10:28:22.000000", "process": "hydra", "mitre_technique": "T1110.001", "description": "Naive timestamp"},
+        {"event_id": "EVT-M2", "timestamp": "2025-12-12T10:28:23.483+00:00", "process": "sshd", "mitre_technique": "T1110.001", "description": "Aware UTC timestamp"},
+        {"event_id": "EVT-M3", "timestamp": "2025-12-12T16:00:25.000+05:30", "process": "sshd", "mitre_technique": "T1110.001", "description": "Aware IST (+05:30) timestamp"}
+    ]
+    finding = {
+        "finding_id": "FINDING-MIXED",
+        "title": "Mixed timestamp verification test",
+        "description": "Validates that mixed naive and aware timestamps never raise TypeError.",
+        "attack_stage": "Initial Access",
+        "mitre_technique": "T1110.001",
+        "supporting_event_ids": ["EVT-M1", "EVT-M2", "EVT-M3"]
+    }
+    evidence_item = {
+        "cited_event_ids": ["EVT-M1", "EVT-M2", "EVT-M3"],
+        "retrieved_events": mixed_events,
+        "missing_event_ids": []
+    }
+    # Must execute smoothly without 'can't compare offset-naive and offset-aware datetimes'
+    verification = verify_finding(finding, evidence_item, mixed_events)
+    assert verification["verification_status"] == "SUPPORTED"
+    assert len(verification["contradictions"]) == 0
+
+def test_12_chronological_comparison_and_anomaly_detection():
+    """Test chronological anomaly detection across mixed timestamp formats."""
+    # EVT-A1 is at 10:45:00 UTC (from 16:15:00 +05:30)
+    # EVT-A2 is at 10:30:00 UTC (from naive string)
+    # EVT-A1 is after EVT-A2 by 15 minutes, which is > 60s threshold anomaly
+    mixed_anomalous_events = [
+        {"event_id": "EVT-A1", "timestamp": "2025-12-12T16:15:00.000+05:30", "mitre_technique": "T1110.001", "description": "First cited event but later UTC time"},
+        {"event_id": "EVT-A2", "timestamp": "2025-12-12T10:30:00.000000", "mitre_technique": "T1110.001", "description": "Second cited event but earlier UTC time"}
+    ]
+    finding = {
+        "finding_id": "FINDING-ANOMALY",
+        "title": "Chronological anomaly test",
+        "description": "Tests temporal disorder detection across mixed timestamps.",
+        "attack_stage": "Initial Access",
+        "mitre_technique": "T1110.001",
+        "supporting_event_ids": ["EVT-A1", "EVT-A2"]
+    }
+    evidence_item = {
+        "cited_event_ids": ["EVT-A1", "EVT-A2"],
+        "retrieved_events": mixed_anomalous_events,
+        "missing_event_ids": []
+    }
+    verification = verify_finding(finding, evidence_item, mixed_anomalous_events)
+    assert any("Chronological anomaly" in c for c in verification["contradictions"])
+
 if __name__ == "__main__":
     print("Running pytest suite...")
     test_1_supported_finding_verification()
@@ -124,4 +201,10 @@ if __name__ == "__main__":
     test_5_temporal_inconsistency_handling()
     test_6_trust_score_calculation()
     test_7_complete_langgraph_execution()
-    print("ALL 7 TESTS PASSED SUCCESSFULLY!")
+    test_8_timestamp_normalizer_naive_iso()
+    test_9_timestamp_normalizer_utc_aware()
+    test_10_timestamp_normalizer_non_utc_offset()
+    test_11_mixed_naive_and_aware_event_set_verification()
+    test_12_chronological_comparison_and_anomaly_detection()
+    print("ALL 12 TESTS PASSED SUCCESSFULLY!")
+

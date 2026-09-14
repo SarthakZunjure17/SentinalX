@@ -6,6 +6,8 @@ Independently verifies AI-generated investigation findings against structured se
 from typing import Dict, List, Any, Tuple
 from datetime import datetime
 
+from src.normalizer import normalize_timestamp
+
 # Domain mapping for MITRE technique categories
 TACTIC_STAGE_MAP = {
     "Initial Access": ["T1110", "T1110.001", "T1078", "T1078.002", "T1133", "T1190"],
@@ -122,24 +124,25 @@ def verify_finding(
     temporal_consistent = True
     timestamps = []
     for ev in retrieved_events:
-        ts_str = ev.get("timestamp")
-        if ts_str:
+        ts_val = ev.get("timestamp")
+        if ts_val is not None:
             try:
-                # Parse ISO string
-                ts = datetime.fromisoformat(ts_str.replace("Z", "+00:00"))
-                timestamps.append(ts)
+                ts = normalize_timestamp(ts_val)
+                timestamps.append((ev.get("event_id", "UNKNOWN"), ts))
             except Exception:
                 pass
                 
     if len(timestamps) > 1:
         # Verify timestamps do not jump wildly backwards
         for i in range(len(timestamps) - 1):
-            if timestamps[i] > timestamps[i+1]:
+            evt_id_curr, ts_curr = timestamps[i]
+            evt_id_next, ts_next = timestamps[i+1]
+            if ts_curr > ts_next:
                 # Minor timestamp disorder in log capture is tolerable if within 1 min
-                time_diff = (timestamps[i] - timestamps[i+1]).total_seconds()
+                time_diff = (ts_curr - ts_next).total_seconds()
                 if time_diff > 60:
                     temporal_consistent = False
-                    contradictions.append(f"Chronological anomaly: Event {retrieved_events[i]['event_id']} occurred after {retrieved_events[i+1]['event_id']}.")
+                    contradictions.append(f"Chronological anomaly: Event {evt_id_curr} occurred after {evt_id_next}.")
 
     # 4. Status Assignment Logic
     if contradictions:

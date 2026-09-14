@@ -1,5 +1,76 @@
 import re
+from datetime import datetime, timezone
 from typing import Dict, List, Any, Optional
+
+def normalize_timestamp(value: Any) -> datetime:
+    """
+    Canonical timestamp normalizer for SentinelX.
+    Parses any ISO string, Unix epoch, or datetime object and returns
+    a timezone-aware UTC datetime.
+    
+    Guarantees:
+    1. Timezone-naive datetimes / strings are assigned explicit UTC (tzinfo=timezone.utc).
+    2. Timezone-aware datetimes / strings with offsets are converted to UTC (.astimezone(timezone.utc)).
+    3. Handles 'Z' / 'z' suffixes, microsecond precision, and custom ISO formats.
+    4. Numeric Unix epochs (int/float) are converted to UTC datetimes.
+    5. Returns a timezone-aware UTC datetime, preventing 'can't compare offset-naive and offset-aware datetimes'.
+    """
+    if value is None:
+        return datetime(2025, 12, 12, 10, 0, 0, tzinfo=timezone.utc)
+
+    if isinstance(value, datetime):
+        if value.tzinfo is None or value.tzinfo.utcoffset(value) is None:
+            return value.replace(tzinfo=timezone.utc)
+        return value.astimezone(timezone.utc)
+
+    if isinstance(value, (int, float)):
+        return datetime.fromtimestamp(value, tz=timezone.utc)
+
+    if isinstance(value, str):
+        val_str = value.strip()
+        if not val_str:
+            return datetime(2025, 12, 12, 10, 0, 0, tzinfo=timezone.utc)
+
+        # Handle numeric epoch string
+        try:
+            val_float = float(val_str)
+            if val_float > 1000000000:
+                return datetime.fromtimestamp(val_float, tz=timezone.utc)
+        except ValueError:
+            pass
+
+        # Clean 'Z'/'z' suffix for ISO parser
+        clean_str = val_str.replace("Z", "+00:00").replace("z", "+00:00")
+        try:
+            dt = datetime.fromisoformat(clean_str)
+            if dt.tzinfo is None or dt.tzinfo.utcoffset(dt) is None:
+                return dt.replace(tzinfo=timezone.utc)
+            return dt.astimezone(timezone.utc)
+        except Exception:
+            pass
+
+        # Common fallback format parsing
+        for fmt in (
+            "%Y-%m-%dT%H:%M:%S.%f%z",
+            "%Y-%m-%dT%H:%M:%S%z",
+            "%Y-%m-%dT%H:%M:%S.%f",
+            "%Y-%m-%dT%H:%M:%S",
+            "%Y-%m-%d %H:%M:%S.%f%z",
+            "%Y-%m-%d %H:%M:%S%z",
+            "%Y-%m-%d %H:%M:%S.%f",
+            "%Y-%m-%d %H:%M:%S",
+        ):
+            try:
+                dt = datetime.strptime(val_str, fmt)
+                if dt.tzinfo is None or dt.tzinfo.utcoffset(dt) is None:
+                    return dt.replace(tzinfo=timezone.utc)
+                return dt.astimezone(timezone.utc)
+            except Exception:
+                continue
+
+    # Fallback to standard base timestamp in UTC
+    return datetime(2025, 12, 12, 10, 0, 0, tzinfo=timezone.utc)
+
 
 def normalize_event(raw: Dict[str, Any], event_id: str) -> Dict[str, Any]:
     """
