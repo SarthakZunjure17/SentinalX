@@ -1,7 +1,7 @@
 [
   {
     "event_id": "EVT-1001",
-    "timestamp": "2025-12-12T10:28:22.693190",
+    "timestamp": "2025-12-12T10:28:22.693190+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": "ubuntu",
@@ -15,7 +15,7 @@
   },
   {
     "event_id": "EVT-1002",
-    "timestamp": "2025-12-12T10:28:23.483+0000",
+    "timestamp": "2025-12-12T10:28:23.483000+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": null,
@@ -29,7 +29,7 @@
   },
   {
     "event_id": "EVT-1003",
-    "timestamp": "2025-12-12T10:28:23.483+0000",
+    "timestamp": "2025-12-12T10:28:23.483000+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": null,
@@ -43,7 +43,7 @@
   },
   {
     "event_id": "EVT-1004",
-    "timestamp": "2025-12-12T10:28:25.489+0000",
+    "timestamp": "2025-12-12T10:28:25.489000+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": null,
@@ -57,7 +57,7 @@
   },
   {
     "event_id": "EVT-1005",
-    "timestamp": "2025-12-12T10:28:43.802248",
+    "timestamp": "2025-12-12T10:28:43.802248+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": null,
@@ -71,7 +71,7 @@
   },
   {
     "event_id": "EVT-1006",
-    "timestamp": "2025-12-12T10:28:59.926744",
+    "timestamp": "2025-12-12T10:28:59.926744+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": "aecid",
@@ -85,7 +85,7 @@
   },
   {
     "event_id": "EVT-1007",
-    "timestamp": "2025-12-12T10:29:50.037143",
+    "timestamp": "2025-12-12T10:29:50.037143+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": "root",
@@ -99,7 +99,7 @@
   },
   {
     "event_id": "EVT-1008",
-    "timestamp": "2025-12-12T10:30:05.044203",
+    "timestamp": "2025-12-12T10:30:05.044203+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": null,
@@ -113,7 +113,7 @@
   },
   {
     "event_id": "EVT-1009",
-    "timestamp": "2025-12-12T10:30:35.052241",
+    "timestamp": "2025-12-12T10:30:35.052241+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": "root",
@@ -127,7 +127,7 @@
   },
   {
     "event_id": "EVT-1010",
-    "timestamp": "2025-12-12T10:30:50.058127",
+    "timestamp": "2025-12-12T10:30:50.058127+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": null,
@@ -141,7 +141,7 @@
   },
   {
     "event_id": "EVT-1011",
-    "timestamp": "2025-12-12T10:31:05.062878",
+    "timestamp": "2025-12-12T10:31:05.062878+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": "root",
@@ -155,7 +155,7 @@
   },
   {
     "event_id": "EVT-1012",
-    "timestamp": "2025-12-12T10:32:30.613553",
+    "timestamp": "2025-12-12T10:32:30.613553+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": null,
@@ -169,7 +169,7 @@
   },
   {
     "event_id": "EVT-1013",
-    "timestamp": "2025-12-12T10:32:45.621796",
+    "timestamp": "2025-12-12T10:32:45.621796+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": "root",
@@ -183,7 +183,7 @@
   },
   {
     "event_id": "EVT-1014",
-    "timestamp": "2025-12-12T10:32:45.741+0000",
+    "timestamp": "2025-12-12T10:32:45.741000+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": null,
@@ -197,7 +197,7 @@
   },
   {
     "event_id": "EVT-1015",
-    "timestamp": "2025-12-12T10:32:45.746+0000",
+    "timestamp": "2025-12-12T10:32:45.746000+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": null,
@@ -211,7 +211,7 @@
   },
   {
     "event_id": "EVT-1016",
-    "timestamp": "2025-12-12T10:32:47.692+0000",
+    "timestamp": "2025-12-12T10:32:47.692000+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": null,
@@ -225,7 +225,7 @@
   },
   {
     "event_id": "EVT-1017",
-    "timestamp": "2025-12-12T10:32:47.696+0000",
+    "timestamp": "2025-12-12T10:32:47.696000+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": null,
@@ -239,7 +239,7 @@
   },
   {
     "event_id": "EVT-1018",
-    "timestamp": "2025-12-12T10:32:47.700+0000",
+    "timestamp": "2025-12-12T10:32:47.700000+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": null,
@@ -253,7 +253,7 @@
   },
   {
     "event_id": "EVT-1019",
-    "timestamp": "2025-12-12T10:33:20.630661",
+    "timestamp": "2025-12-12T10:33:20.630661+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": null,
@@ -267,7 +267,7 @@
   },
   {
     "event_id": "EVT-1020",
-    "timestamp": "2025-12-12T10:33:50.640719",
+    "timestamp": "2025-12-12T10:33:50.640719+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": "root",
@@ -281,7 +281,7 @@
   },
   {
     "event_id": "EVT-1021",
-    "timestamp": "2025-12-12T10:34:35.650525",
+    "timestamp": "2025-12-12T10:34:35.650525+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": null,
@@ -295,7 +295,7 @@
   },
   {
     "event_id": "EVT-1022",
-    "timestamp": "2025-12-12T10:35:05.654988",
+    "timestamp": "2025-12-12T10:35:05.654988+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": null,
@@ -309,7 +309,7 @@
   },
   {
     "event_id": "EVT-1023",
-    "timestamp": "2025-12-12T10:36:50.731411",
+    "timestamp": "2025-12-12T10:36:50.731411+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": "root",
@@ -323,7 +323,7 @@
   },
   {
     "event_id": "EVT-1024",
-    "timestamp": "2025-12-12T10:37:50.743981",
+    "timestamp": "2025-12-12T10:37:50.743981+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": null,
@@ -337,7 +337,7 @@
   },
   {
     "event_id": "EVT-1025",
-    "timestamp": "2025-12-12T10:38:20.844715",
+    "timestamp": "2025-12-12T10:38:20.844715+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": "root",
@@ -351,7 +351,7 @@
   },
   {
     "event_id": "EVT-1026",
-    "timestamp": "2025-12-12T10:38:51.057214",
+    "timestamp": "2025-12-12T10:38:51.057214+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": "root",
@@ -365,7 +365,7 @@
   },
   {
     "event_id": "EVT-1027",
-    "timestamp": "2025-12-12T10:39:06.247325",
+    "timestamp": "2025-12-12T10:39:06.247325+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": "aecid",
@@ -379,7 +379,7 @@
   },
   {
     "event_id": "EVT-1028",
-    "timestamp": "2025-12-12T10:41:02.320+0000",
+    "timestamp": "2025-12-12T10:41:02.320000+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": null,
@@ -393,7 +393,7 @@
   },
   {
     "event_id": "EVT-1029",
-    "timestamp": "2025-12-12T10:45:39.950733",
+    "timestamp": "2025-12-12T10:45:39.950733+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": null,
@@ -407,7 +407,7 @@
   },
   {
     "event_id": "EVT-1030",
-    "timestamp": "2025-12-12T10:45:56.275887",
+    "timestamp": "2025-12-12T10:45:56.275887+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": null,
@@ -421,7 +421,7 @@
   },
   {
     "event_id": "EVT-1031",
-    "timestamp": "2025-12-12T10:46:12.648064",
+    "timestamp": "2025-12-12T10:46:12.648064+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": null,
@@ -435,7 +435,7 @@
   },
   {
     "event_id": "EVT-1032",
-    "timestamp": "2025-12-12T10:46:29.018547",
+    "timestamp": "2025-12-12T10:46:29.018547+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": null,
@@ -449,7 +449,7 @@
   },
   {
     "event_id": "EVT-1033",
-    "timestamp": "2025-12-12T10:46:45.398399",
+    "timestamp": "2025-12-12T10:46:45.398399+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": null,
@@ -463,7 +463,7 @@
   },
   {
     "event_id": "EVT-1034",
-    "timestamp": "2025-12-12T10:47:01.722170",
+    "timestamp": "2025-12-12T10:47:01.722170+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": null,
@@ -477,7 +477,7 @@
   },
   {
     "event_id": "EVT-1035",
-    "timestamp": "2025-12-12T10:47:18.091378",
+    "timestamp": "2025-12-12T10:47:18.091378+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": "root",
@@ -491,7 +491,7 @@
   },
   {
     "event_id": "EVT-1036",
-    "timestamp": "2025-12-12T10:47:18.399+0000",
+    "timestamp": "2025-12-12T10:47:18.399000+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": null,
@@ -505,7 +505,7 @@
   },
   {
     "event_id": "EVT-1037",
-    "timestamp": "2025-12-12T10:47:18.401+0000",
+    "timestamp": "2025-12-12T10:47:18.401000+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": null,
@@ -519,7 +519,7 @@
   },
   {
     "event_id": "EVT-1038",
-    "timestamp": "2025-12-12T10:47:34.463304",
+    "timestamp": "2025-12-12T10:47:34.463304+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": "root",
@@ -533,7 +533,7 @@
   },
   {
     "event_id": "EVT-1039",
-    "timestamp": "2025-12-12T10:47:50.850467",
+    "timestamp": "2025-12-12T10:47:50.850467+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": null,
@@ -547,7 +547,7 @@
   },
   {
     "event_id": "EVT-1040",
-    "timestamp": "2025-12-12T10:48:07.171055",
+    "timestamp": "2025-12-12T10:48:07.171055+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": "root",
@@ -561,7 +561,7 @@
   },
   {
     "event_id": "EVT-1041",
-    "timestamp": "2025-12-12T10:48:23.359680",
+    "timestamp": "2025-12-12T10:48:23.359680+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": "root",
@@ -575,7 +575,7 @@
   },
   {
     "event_id": "EVT-1042",
-    "timestamp": "2025-12-12T10:48:39.724594",
+    "timestamp": "2025-12-12T10:48:39.724594+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": "root",
@@ -589,7 +589,7 @@
   },
   {
     "event_id": "EVT-1043",
-    "timestamp": "2025-12-12T10:48:56.092586",
+    "timestamp": "2025-12-12T10:48:56.092586+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": "root",
@@ -603,7 +603,7 @@
   },
   {
     "event_id": "EVT-1044",
-    "timestamp": "2025-12-12T10:49:12.468733",
+    "timestamp": "2025-12-12T10:49:12.468733+00:00",
     "source_ip": "192.42.1.174",
     "destination_ip": "10.12.0.223",
     "username": null,

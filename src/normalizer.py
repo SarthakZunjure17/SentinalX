@@ -39,8 +39,9 @@ def normalize_timestamp(value: Any) -> datetime:
         except ValueError:
             pass
 
-        # Clean 'Z'/'z' suffix for ISO parser
+        # Clean 'Z'/'z' suffix and ensure +HH:MM colon format for ISO parser
         clean_str = val_str.replace("Z", "+00:00").replace("z", "+00:00")
+        clean_str = re.sub(r'([+-]\d{2})(\d{2})$', r'\1:\2', clean_str)
         try:
             dt = datetime.fromisoformat(clean_str)
             if dt.tzinfo is None or dt.tzinfo.utcoffset(dt) is None:
@@ -91,7 +92,9 @@ def normalize_event(raw: Dict[str, Any], event_id: str) -> Dict[str, Any]:
     - source_file: Ground-truth original log file path
     """
     source_type = raw.get("source_type")
-    timestamp = raw.get("timestamp", "2025-12-12T10:00:00.000000")
+    raw_timestamp = raw.get("timestamp") or raw.get("start-datetime") or raw.get("@timestamp") or "2025-12-12T10:00:00.000000"
+    canonical_dt = normalize_timestamp(raw_timestamp)
+    timestamp = canonical_dt.isoformat()
     source_file = raw.get("source_file", "CAM-LDS: raw_dataset")
     
     source_ip = None

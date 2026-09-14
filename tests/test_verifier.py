@@ -4,6 +4,7 @@ Tests evidence verification engine, trust score, and LangGraph workflow.
 """
 import os
 import sys
+import unittest
 try:
     import pytest
 except ImportError:
@@ -192,8 +193,72 @@ def test_12_chronological_comparison_and_anomaly_detection():
     verification = verify_finding(finding, evidence_item, mixed_anomalous_events)
     assert any("Chronological anomaly" in c for c in verification["contradictions"])
 
+def test_13_canonical_normalization_of_all_events():
+    """Validates that all normalized events have canonical UTC ISO timestamps."""
+    events, _ = get_test_data()
+    for ev in events:
+        ts = ev.get("timestamp")
+        assert ts is not None, f"Event {ev.get('event_id')} missing timestamp"
+        assert "+00:00" in ts or "Z" in ts, f"Event {ev.get('event_id')} timestamp {ts} is not canonical UTC"
+        dt = normalize_timestamp(ts)
+        assert dt.tzinfo == timezone.utc
+
+def test_14_streamlit_pipeline_both_modes():
+    """Integration test: Executes exact pipeline used by Streamlit app for all modes."""
+    # 1. Controlled benchmark demo mode
+    state_demo = run_investigation_pipeline("INC-2025-CAM-LDS-001", mode="controlled_demo")
+    assert state_demo["trust_score"] > 0
+    assert len(state_demo["verification_results"]) == 6
+    assert state_demo["report"]["overview"]["incident_id"] == "INC-2025-CAM-LDS-001"
+    
+    # 2. Live AI fallback / demo mode
+    state_live_fallback = run_investigation_pipeline("INC-2025-CAM-LDS-001", mode="demo")
+    assert state_live_fallback["trust_score"] > 0
+    assert len(state_live_fallback["verification_results"]) == 6
+
+def test_15_mixed_timestamp_stress_test():
+    """Stress tests timestamp normalization across every format variation."""
+    test_cases = [
+        "2025-12-12T10:28:22.693190",
+        "2025-12-12T10:28:23.483+00:00",
+        "2025-12-12T10:28:23.483+0000",
+        "2025-12-12T10:30:00+05:30",
+        "2025-12-12T10:30:00Z",
+        "2025-12-12 10:30:00",
+        1765535302,
+        1765535302.5,
+    ]
+    normalized_dts = [normalize_timestamp(tc) for tc in test_cases]
+    for dt in normalized_dts:
+        assert dt.tzinfo == timezone.utc
+    
+    # Compare all pairs to ensure zero TypeError
+    for i in range(len(normalized_dts)):
+        for j in range(len(normalized_dts)):
+            _ = normalized_dts[i] > normalized_dts[j]
+            _ = normalized_dts[i] == normalized_dts[j]
+            _ = (normalized_dts[i] - normalized_dts[j]).total_seconds()
+
+class TestSentinelXVerifier(unittest.TestCase if "unittest" in sys.modules else object):
+    def test_all_cases(self):
+        test_1_supported_finding_verification()
+        test_2_unsupported_hallucinated_claim_verification()
+        test_3_insufficient_evidence_claim_verification()
+        test_4_missing_event_id_handling()
+        test_5_temporal_inconsistency_handling()
+        test_6_trust_score_calculation()
+        test_7_complete_langgraph_execution()
+        test_8_timestamp_normalizer_naive_iso()
+        test_9_timestamp_normalizer_utc_aware()
+        test_10_timestamp_normalizer_non_utc_offset()
+        test_11_mixed_naive_and_aware_event_set_verification()
+        test_12_chronological_comparison_and_anomaly_detection()
+        test_13_canonical_normalization_of_all_events()
+        test_14_streamlit_pipeline_both_modes()
+        test_15_mixed_timestamp_stress_test()
+
 if __name__ == "__main__":
-    print("Running pytest suite...")
+    print("Running pytest / standalone suite...")
     test_1_supported_finding_verification()
     test_2_unsupported_hallucinated_claim_verification()
     test_3_insufficient_evidence_claim_verification()
@@ -206,5 +271,10 @@ if __name__ == "__main__":
     test_10_timestamp_normalizer_non_utc_offset()
     test_11_mixed_naive_and_aware_event_set_verification()
     test_12_chronological_comparison_and_anomaly_detection()
-    print("ALL 12 TESTS PASSED SUCCESSFULLY!")
+    test_13_canonical_normalization_of_all_events()
+    test_14_streamlit_pipeline_both_modes()
+    test_15_mixed_timestamp_stress_test()
+    print("ALL 15 TESTS PASSED SUCCESSFULLY!")
+
+
 
