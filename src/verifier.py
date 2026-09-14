@@ -137,6 +137,8 @@ def verify_finding(
         for i in range(len(timestamps) - 1):
             evt_id_curr, ts_curr = timestamps[i]
             evt_id_next, ts_next = timestamps[i+1]
+            ts_curr = normalize_timestamp(ts_curr)
+            ts_next = normalize_timestamp(ts_next)
             if ts_curr > ts_next:
                 # Minor timestamp disorder in log capture is tolerable if within 1 min
                 time_diff = (ts_curr - ts_next).total_seconds()

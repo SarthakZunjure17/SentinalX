@@ -15,25 +15,39 @@ def _read_json_file(filepath: str) -> Any:
     with open(filepath, "r", encoding="utf-8") as f:
         return json.load(f)
 
+from src.normalizer import normalize_timestamp
+
 def load_demo_incident(filepath: Optional[str] = None) -> Dict[str, Any]:
-    """Loads raw demo incident extracted from CAM-LDS dataset (cached)."""
+    """Loads raw demo incident extracted from CAM-LDS dataset (cached & canonicalized)."""
     if filepath is None:
         filepath = os.path.join(get_data_dir(), "demo_incident.json")
     
     if not os.path.exists(filepath):
         raise FileNotFoundError(f"Demo incident file not found at: {filepath}")
         
-    return copy.deepcopy(_read_json_file(filepath))
+    incident = copy.deepcopy(_read_json_file(filepath))
+    # Canonicalize every event timestamp at data loading boundary
+    if "events" in incident and isinstance(incident["events"], list):
+        for ev in incident["events"]:
+            raw_ts = ev.get("timestamp") or ev.get("start-datetime") or ev.get("@timestamp")
+            if raw_ts is not None:
+                ev["timestamp"] = normalize_timestamp(raw_ts).isoformat()
+    return incident
 
 def load_normalized_events(filepath: Optional[str] = None) -> List[Dict[str, Any]]:
-    """Loads normalized security events (cached)."""
+    """Loads normalized security events (cached & canonicalized)."""
     if filepath is None:
         filepath = os.path.join(get_data_dir(), "normalized_events.json")
         
     if not os.path.exists(filepath):
         return []
         
-    return copy.deepcopy(_read_json_file(filepath))
+    events = copy.deepcopy(_read_json_file(filepath))
+    for ev in events:
+        raw_ts = ev.get("timestamp")
+        if raw_ts is not None:
+            ev["timestamp"] = normalize_timestamp(raw_ts).isoformat()
+    return events
 
 def save_normalized_events(events: List[Dict[str, Any]], filepath: Optional[str] = None) -> None:
     """Saves normalized security events to JSON and clears cache."""

@@ -342,8 +342,10 @@ render_html(CUSTOM_CSS)
 # -----------------------------------------------------------------------------
 # PIPELINE EXECUTION & CACHING
 # -----------------------------------------------------------------------------
+CACHE_VERSION = "v3_canonical_utc_2026"
+
 @st.cache_data(show_spinner=False)
-def get_cached_pipeline_result(mode: str = "controlled_demo", incident_id: str = "INC-2025-CAM-LDS-001"):
+def get_cached_pipeline_result(mode: str = "controlled_demo", incident_id: str = "INC-2025-CAM-LDS-001", cache_version: str = CACHE_VERSION):
     """
     Executes the SentinelX LangGraph investigation pipeline.
     Cached so that mode switches and button clicks are instantaneous.

