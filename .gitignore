@@ -1,0 +1,22 @@
+# Environment files
+.env
+.env.local
+
+# Python caches & virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+.pytest_cache/
+
+# Dataset zip archive (large 213MB file excluded for GitHub/Streamlit Cloud)
+# Prepared compact dataset in data/ is included for runtime execution
+dataset/manifestations_filtered.zip
+
+# IDE & system temporary files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

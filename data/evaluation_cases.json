@@ -1,0 +1,91 @@
+[
+  {
+    "finding_id": "FINDING-001",
+    "title": "Automated SSH Password Brute-Force Intrusion",
+    "description": "Attacker initiated a high-frequency SSH password brute-force attack from host 192.42.1.174 using Hydra to gain initial access to the target host.",
+    "attack_stage": "Initial Access",
+    "mitre_technique": "T1110.001",
+    "ai_confidence": 0.94,
+    "supporting_event_ids": [
+      "EVT-1001",
+      "EVT-1002"
+    ],
+    "recommendation": "Enforce SSH key authentication, disable password login, and configure Fail2Ban / IP rate-limiting on port 22.",
+    "is_synthetic_claim": false,
+    "ground_truth_expected_status": "SUPPORTED"
+  },
+  {
+    "finding_id": "FINDING-002",
+    "title": "Privilege Escalation to Root via Sudo",
+    "description": "Attacker executed sudo -i after obtaining valid user session to elevate privileges to root user.",
+    "attack_stage": "Privilege Escalation",
+    "mitre_technique": "T1078.003",
+    "ai_confidence": 0.91,
+    "supporting_event_ids": [
+      "EVT-1004",
+      "EVT-1005"
+    ],
+    "recommendation": "Audit sudoers file configuration, enforce password re-entry for sudo commands, and enable session logging.",
+    "is_synthetic_claim": false,
+    "ground_truth_expected_status": "SUPPORTED"
+  },
+  {
+    "finding_id": "FINDING-003",
+    "title": "Credential Dumping of Linux Password Hashes",
+    "description": "Attacker executed commands to read sensitive hash values from /etc/shadow file.",
+    "attack_stage": "Credential Access",
+    "mitre_technique": "T1003.008",
+    "ai_confidence": 0.95,
+    "supporting_event_ids": [
+      "EVT-1006"
+    ],
+    "recommendation": "Restrict file permissions on /etc/shadow to 0600 root:root and monitor file read access via auditd.",
+    "is_synthetic_claim": false,
+    "ground_truth_expected_status": "SUPPORTED"
+  },
+  {
+    "finding_id": "FINDING-004",
+    "title": "System Cron Persistence via Malicious C2 Script",
+    "description": "Attacker modified /etc/cron.d/health to execute an external bash payload from C2 server every 5 minutes.",
+    "attack_stage": "Persistence",
+    "mitre_technique": "T1053.003",
+    "ai_confidence": 0.96,
+    "supporting_event_ids": [
+      "EVT-1015",
+      "EVT-1016"
+    ],
+    "recommendation": "Immutably lock /etc/cron* directories, audit recurring cron jobs, and block egress traffic to unknown IP addresses.",
+    "is_synthetic_claim": false,
+    "ground_truth_expected_status": "SUPPORTED"
+  },
+  {
+    "finding_id": "FINDING-005",
+    "title": "Execution of Zero-Day Buffer Overflow in Apache Web Server",
+    "description": "AI Analyst claims the initial entry was achieved by exploiting a unauthenticated remote code execution buffer overflow (CVE-2025-9999) in Apache HTTP Server.",
+    "attack_stage": "Initial Access",
+    "mitre_technique": "T1190",
+    "ai_confidence": 0.98,
+    "supporting_event_ids": [
+      "EVT-1001",
+      "EVT-1002"
+    ],
+    "recommendation": "Patch Apache HTTP server immediately to version 2.4.60.",
+    "is_synthetic_claim": true,
+    "ground_truth_expected_status": "UNSUPPORTED"
+  },
+  {
+    "finding_id": "FINDING-006",
+    "title": "Exfiltration of 50GB Credit Card Database to External IP",
+    "description": "AI Analyst claims attacker exfiltrated encrypted credit card database contents to external host 203.0.113.50.",
+    "attack_stage": "Exfiltration",
+    "mitre_technique": "T1041",
+    "ai_confidence": 0.89,
+    "supporting_event_ids": [
+      "EVT-1026",
+      "EVT-1027"
+    ],
+    "recommendation": "Isolate host 203.0.113.50 at boundary firewall.",
+    "is_synthetic_claim": true,
+    "ground_truth_expected_status": "INSUFFICIENT_EVIDENCE"
+  }
+]
